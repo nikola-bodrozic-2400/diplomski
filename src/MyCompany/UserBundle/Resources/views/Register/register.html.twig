@@ -10,6 +10,7 @@
 
                     {{ form_row( form.username) }}                    
                     {{ form_row( form.email) }}
+                    {{ form_row( form.roles) }}
                     {{ form_row( form.plainpassword.first, {"label":"Password", 'attr' : { 'class' : 'form-control' }} ) }}   
                     {{ form_row( form.plainpassword.second, {"label":"Repeat password", 'attr' : { 'class' : 'form-control' }} ) }}
                     {{ form_rest(form) }}           

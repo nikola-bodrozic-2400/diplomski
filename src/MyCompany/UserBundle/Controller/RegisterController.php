@@ -29,7 +29,12 @@ class RegisterController extends Controller
             //$user->setUsername($data['username']);
             //$user->setEmail($data['email']);
             $user->setPassword($this->encodePassword($user, $user->getPlainPassword() ));
-            $user->setRoles(['ROLE_USER']);
+            $tmpuser = $user->getroles();
+            //var_dump($tmpuser[0]);
+            //var_dump($data['roles']);
+            //die();
+            $bl = [$tmpuser[0]];
+            $user->setRoles($bl);
             //$user->setIsActive(true);
 
             $em = $this->getDoctrine()->getManager();
