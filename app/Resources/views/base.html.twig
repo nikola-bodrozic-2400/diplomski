@@ -35,7 +35,7 @@
 
                             <li{% if strana =="login_form" %} class='active'{% endif %}>
                                                             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                                                 <a class="btn btn-info" href="{{ path('logout') }}">Hello {{ app.user.username }} Logout</a>
+                                                                 <a href="{{ path('logout') }}">Hello <strong>{{ app.user.username }}</strong> Logout</a>
                                                             {% else %}
                                                                  <a href="{{ path('login_form') }}">Login</a>
                                                             {% endif %}
