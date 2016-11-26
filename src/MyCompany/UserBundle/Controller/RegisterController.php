@@ -44,6 +44,11 @@ class RegisterController extends Controller
         return array('form' => $form->createView());
     }
 
+    /**
+     * @param User $user
+     * @param $plainPassword
+     * @return mixed
+     */
     private function encodePassword(User $user, $plainPassword) {
         $encoder = $this->container->get('security.encoder_factory')
             ->getEncoder($user);
