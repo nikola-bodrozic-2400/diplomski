@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Article list</h1>
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Details</th>
+                <th>Owner</th>
+                <th>Writers</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td><a href="{{ path('news_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
+                <td>{{ article.name }}</td>
+                <td>{% if article.time %}{{ article.time|date('g:ia jS F Y') }}{% endif %}</td>
+                <td>{{ article.location }}</td>
+                <td>{{ article.details }}</td>
+                <td>{{ article.owner.username }}</td>
+                <td>
+                    article has {{ article.writers|length }} writers.<br>
+                    {% for w in article.writers %}
+                        <br><strong>{{ w }}</strong> has mail <strong>{{ w.email | truncate(5)}}</strong><br>
+                    {% endfor %}
+                </td>
+                <td>
+
+                    <ul>
+                        <li>
+                            <a href="{{ path('news_show', { 'id': article.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('news_edit', { 'id': article.id }) }}">edit</a>
+                        </li>
+                        {% if app.user == article.owner %}
+                        <li>
+                            You are owner
+                        </li>
+                        {% endif %}
+                    </ul>
+                </td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation text-center">
+        {{ knp_pagination_render(articles) }}
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('news_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
