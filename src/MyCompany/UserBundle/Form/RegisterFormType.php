@@ -31,6 +31,7 @@ class RegisterFormType extends AbstractType
                     'Novinar' => 'ROLE_NOVINAR',
                     'Web Master' => 'ROLE_WM',
                     'Lektor' => 'ROLE_LEKTOR',
+                    'Knjigovodja' => 'ROLE_KNJIG'
                 )
             ))
     	;

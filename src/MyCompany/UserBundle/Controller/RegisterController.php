@@ -21,13 +21,17 @@ class RegisterController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $request->getSession()
                 ->getFlashBag()
-                ->add('success', 'Registracioja uspela, kliknite na login u meniju')
+                ->add('success', 'Registracija uspela, kliknite na login u meniju')
             ;
 
             $data = $form->getData();
 
             $user->setPassword($this->encodePassword($user, $user->getPlainPassword() ));
             $tmpuser =  $form->get('roles')->getData();
+            $approles = array("ROLE_MANAGER", "ROLE_NOVINAR", "ROLE_WM", "ROLE_LEKTOR", "ROLE_KNJIG");
+            if (!in_array($tmpuser[0], $approles)) {
+                die ("hack attack in progress your IP WILL BE logged");
+            }
             $user->setRoles([$tmpuser[0]]);
 
             $em = $this->getDoctrine()->getManager();
