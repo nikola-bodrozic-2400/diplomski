@@ -21,21 +21,14 @@ class RegisterController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $request->getSession()
                 ->getFlashBag()
-                ->add('success', 'Welcome to the Death Star, have a magical day!')
+                ->add('success', 'Registracioja uspela, kliknite na login u meniju')
             ;
 
             $data = $form->getData();
 
-            //$user->setUsername($data['username']);
-            //$user->setEmail($data['email']);
             $user->setPassword($this->encodePassword($user, $user->getPlainPassword() ));
-            $tmpuser = $user->getroles();
-            //var_dump($tmpuser[0]);
-            //var_dump($data['roles']);
-            //die();
-            $bl = [$tmpuser[0]];
-            $user->setRoles($bl);
-            //$user->setIsActive(true);
+            $tmpuser =  $form->get('roles')->getData();
+            $user->setRoles([$tmpuser[0]]);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
