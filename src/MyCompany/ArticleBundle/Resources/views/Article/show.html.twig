@@ -1,44 +1,45 @@
 {% extends 'base.html.twig' %}
-
+{% set latlang = article.location|split(' ') %}
 {% block body %}
-    <h1>Article</h1>
+    <style type="text/css">
+        #map { height: 200px; width: 200px; }
+    </style>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript">
+        function initialize() {
+
+            var myLatlng = new google.maps.LatLng({{ latlang[0] }}{{ latlang[1] }});
+
+            var mapOptions = {
+                center: new google.maps.LatLng({{ latlang[0] }}{{ latlang[1] }}),
+                zoom: 12,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map(
+                    document.getElementById("map"),
+                    mapOptions
+            );
+
+            var marker1 = new google.maps.Marker({
+                position: myLatlng,
+                map: map
+            });
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 
     <h1>{{ article.title }}</h1>
-    <p class="lead"><span class="glyphicon glyphicon-user"></span> {% for w in article.writers %}<strong>{{ w }}</strong>  <strong>{{ w.email | truncate(5)}}</strong>, {% endfor %}
-    <p><span class="glyphicon glyphicon-time"></span> Posted on:{% if article.time %}{{ article.time|date('Y-m-d H:i:s') }}{% endif %}</p>
+    <p class="text-muted"><span class="glyphicon glyphicon-user"></span> {% for w in article.writers %}<strong>{{ w }}</strong>  <strong>{{ w.email | truncate(5)}}</strong>, {% endfor %}
+    <p class="text-muted"><span class="glyphicon glyphicon-time"></span> Posted on: {% if article.time %}{{ article.time|date('H:i d. M Y.') }}{% endif %}</p>
 
+    <div id="map" style="float:left;margin-right: 25px;">{{ article.location }}</div>
+    <div>{{ article.body }}</div>
     <hr>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ article.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ article.title }}</td>
-            </tr>
-            <tr>
-                <th>Time</th>
-                <td>{% if article.time %}{{ article.time|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Location</th>
-                <td>{{ article.location }}</td>
-            </tr>
-            <tr>
-                <th>Post text</th>
-                <td>{{ article.body }}</td>
-            </tr>
-        </tbody>
-    </table>
-<hr>
 
 {% for w in article.writers %}
 <p><strong>{{ w }}</strong> has mail <strong>{{ w.email | truncate(5)}}</strong></p>
 {% endfor %}
-
     <ul>
         <li>
             <a href="{{ path('news_edit', { 'id': article.id }) }}">Edit</a>

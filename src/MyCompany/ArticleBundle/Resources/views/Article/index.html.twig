@@ -9,10 +9,9 @@
                 <th>Id</th>
                 <th>Title</th>
                 <th>Time</th>
-                <th>Location</th>
                 <th>Post text</th>
                 <th>Owner</th>
-                <th>Writers</th>
+                <th width="200px">Writers</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -21,9 +20,8 @@
             <tr>
                 <td><a href="{{ path('news_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
                 <td>{{ article.title }}</td>
-                <td>{% if article.time %}{{ article.time|date('g:ia jS F Y') }}{% endif %}</td>
-                <td>{{ article.location }}</td>
-                <td>{{ article.body }}</td>
+                <td>{% if article.time %}{{ article.time|date('jS F Y') }}{% endif %}</td>
+                <td>{{ article.body | truncate (200) }}</td>
                 <td>{{ article.owner.username }}</td>
                 <td>
                     article has {{ article.writers|length }} writers.<br>
