@@ -26,9 +26,9 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255)
      */
-    private $name;
+    private $title;
 
     /**
      * @var \DateTime
@@ -47,9 +47,9 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="details", type="text", nullable=true)
+     * @ORM\Column(name="body", type="text", nullable=true)
      */
-    private $details;
+    private $body;
 
     /**
      * @ORM\ManyToOne(targetEntity="MyCompany\UserBundle\Entity\User")
@@ -112,28 +112,6 @@ class Article
         return $this->id;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Article
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
 
     /**
      * Set time
@@ -182,27 +160,57 @@ class Article
     }
 
     /**
-     * Set details
+     * Add writers
      *
-     * @param string $details
+     * @param \MyCompany\UserBundle\Entity\User $writers
      * @return Article
      */
-    public function setDetails($details)
+    public function addWriter(\MyCompany\UserBundle\Entity\User $writers)
     {
-        $this->details = $details;
+        $this->writers[] = $writers;
 
         return $this;
     }
 
     /**
-     * Get details
+     * Remove writers
      *
-     * @return string 
+     * @param \MyCompany\UserBundle\Entity\User $writers
      */
-    public function getDetails()
+    public function removeWriter(\MyCompany\UserBundle\Entity\User $writers)
     {
-        return $this->details;
+        $this->writers->removeElement($writers);
     }
 
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBody()
+    {
+        return $this->body;
+    }
+
+    /**
+     * @param string $body
+     */
+    public function setBody($body)
+    {
+        $this->body = $body;
+    }
 }

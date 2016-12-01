@@ -7,10 +7,10 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
+                <th>Title</th>
                 <th>Time</th>
                 <th>Location</th>
-                <th>Details</th>
+                <th>Post text</th>
                 <th>Owner</th>
                 <th>Writers</th>
                 <th>Actions</th>
@@ -20,10 +20,10 @@
         {% for article in articles %}
             <tr>
                 <td><a href="{{ path('news_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
-                <td>{{ article.name }}</td>
+                <td>{{ article.title }}</td>
                 <td>{% if article.time %}{{ article.time|date('g:ia jS F Y') }}{% endif %}</td>
                 <td>{{ article.location }}</td>
-                <td>{{ article.details }}</td>
+                <td>{{ article.body }}</td>
                 <td>{{ article.owner.username }}</td>
                 <td>
                     article has {{ article.writers|length }} writers.<br>

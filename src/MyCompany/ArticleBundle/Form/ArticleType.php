@@ -15,10 +15,10 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('title')
             ->add('time', 'Symfony\Component\Form\Extension\Core\Type\DateTimeType')
             ->add('location')
-            ->add('details')
+            ->add('body')
         ;
     }
     
