@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+    {% block body %}
+        <section class="login">
+            <article>
+                <h1>Register</h1>
+
+                <form action="{{ path('user_signup') }}" method="POST" novalidate>
+                    {{ form_errors(form) }}
+
+                    {{ form_row( form.username) }}                    
+                    {{ form_row( form.email) }}
+                    {{ form_row( form.plainpassword.first, {"label":"Password", 'attr' : { 'class' : 'form-control' }} ) }}   
+                    {{ form_row( form.plainpassword.second, {"label":"Repeat password", 'attr' : { 'class' : 'form-control' }} ) }}
+                    {{ form_rest(form) }}           
+                    <br>                          
+                    <input type="submit" class="btn btn-primary pull-left" value="Sign Up!" />
+                </form>
+            </article>
+        </section>
+    {% endblock %}

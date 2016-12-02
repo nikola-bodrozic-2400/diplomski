@@ -45,6 +45,36 @@ class RegisterController extends Controller
     }
 
     /**
+     * @Route("/singup", name="user_signup")
+     * @Template()
+     */
+    public function signupAction(Request $request)
+    {
+        $user = new User();
+        $form = $this->createForm('MyCompany\UserBundle\Form\SignupFormType', $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success', 'Registracija uspela, kliknite na login u meniju')
+            ;
+
+            $data = $form->getData();
+
+            $user->setPassword($this->encodePassword($user, $user->getPlainPassword() ));
+            $user->setRoles(['ROLE_REGUSER']);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            $url = $this->generateUrl('news_index');
+            return $this->redirect($url);
+        }
+        return array('form' => $form->createView());
+    }
+
+    /**
      * @param User $user
      * @param $plainPassword
      * @return mixed
