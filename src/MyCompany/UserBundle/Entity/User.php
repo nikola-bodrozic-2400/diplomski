@@ -54,6 +54,10 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $email;
 
+    /**
+     * @ORM\Column(type="string", length=24)
+     */
+    private $ime;
 
    /**
     * @var string
@@ -307,5 +311,29 @@ class User implements AdvancedUserInterface, \Serializable
     public function __toString()
     {
         return (string) $this->getUsername();
+    }
+
+    /**
+     * Set ime
+     *
+     * @param string $ime
+     *
+     * @return User
+     */
+    public function setIme($ime)
+    {
+        $this->ime = $ime;
+
+        return $this;
+    }
+
+    /**
+     * Get ime
+     *
+     * @return string
+     */
+    public function getIme()
+    {
+        return $this->ime;
     }
 }

@@ -7,7 +7,7 @@
 
                 <form action="{{ path('user_signup') }}" method="POST" novalidate>
                     {{ form_errors(form) }}
-
+                    {{ form_row( form.ime) }}
                     {{ form_row( form.username) }}                    
                     {{ form_row( form.email) }}
                     {{ form_row( form.plainpassword.first, {"label":"Password", 'attr' : { 'class' : 'form-control' }} ) }}   

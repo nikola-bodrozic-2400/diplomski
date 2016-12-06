@@ -1,4 +1,5 @@
 <?php
+
 namespace MyCompany\UserBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -7,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;  
 use MyCompany\UserBundle\Entity\User;
 use MyCompany\UserBundle\Form\RegisterFormType;
+
 class RegisterController extends Controller
 {
     /**
