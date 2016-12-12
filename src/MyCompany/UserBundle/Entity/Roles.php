@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Roles
  *
- * @ORM\Table(name="roles")
+ * @ORM\Table(name="sym_roles")
  * @ORM\Entity(repositoryClass="MyCompany\UserBundle\Repository\RolesRepository")
  */
 class Roles
@@ -63,4 +63,3 @@ class Roles
         return $this->name;
     }
 }
-
