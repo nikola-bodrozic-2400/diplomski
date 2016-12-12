@@ -1,3 +1,7 @@
+user_roles:
+    resource: "@UserBundle/Controller/RolesController.php"
+    type:     annotation
+
 my_company_article:
     resource: "@MyCompanyArticleBundle/Resources/config/routing.yml"
     prefix:   /
