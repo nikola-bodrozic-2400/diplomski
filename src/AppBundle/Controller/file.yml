@@ -1,0 +1,6 @@
+security:
+    encoders: { AppBundle\Entity\User: bcrypt }
+    role_hierarchy: { ROLE_ADMIN: [ROLE_USER] }
+    providers: { chain_provider: { chain: { providers: [user_db] } }, user_db: { entity: { class: 'AppBundle:User', property: username } } }
+    firewalls: { main: { pattern: '/.*', form_login: { login_path: /login, check_path: /login_check, default_target_path: /post/showall }, logout: { path: /logout, target: / }, security: true, anonymous: true } }
+    access_control: [{ path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }, { path: '^/user/.*', roles: ROLE_ADMIN }, { path: ^/post/new, roles: ROLE_USER }, { path: ^/post/edit/, roles: ROLE_USER }, { path: ^/post/create/, roles: ROLE_USER }, { path: ^/post/delete/, roles: ROLE_USER }, { path: ^/post/editposts, roles: ROLE_USER }, { path: ^/post/showpost, roles: IS_AUTHENTICATED_ANONYMOUSLY }, { path: ^/post/showall, roles: IS_AUTHENTICATED_ANONYMOUSLY }, { path: '/.*', roles: IS_AUTHENTICATED_ANONYMOUSLY }, { path: ^/post/publish, roles: ROLE_NOVINAR }]
