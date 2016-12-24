@@ -14,13 +14,13 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $p = realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.'AppBundle'.DIRECTORY_SEPARATOR.'Controller' ;
-        $value = Yaml::parse(file_get_contents($p.'/s5.yml', true));
-        // echo $p;
-        dump($value);
-        array_push($value['security']['access_control'],['path'=>"^/post/publish",'roles'=>"ROLE_NOVINAR"]);
-        dump($value['security']['access_control'][10]);
-        file_put_contents($p.'/file.yml', Yaml::dump($value));
+        $p = realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR ;
+        $value = Yaml::parse(file_get_contents($p.'/security.yml', true));
+        echo $p;
+        // dump($value);
+        array_push($value['security']['access_control'],['path'=>"^/post/new",'roles'=>"ROLE_BLOGER"]);
+        // dump($value['security']['access_control'][10]);
+        file_put_contents($p.'/security.yml', Yaml::dump($value, 5));
         die;
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', array(

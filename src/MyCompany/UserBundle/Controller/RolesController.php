@@ -50,6 +50,7 @@ class RolesController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            die($form->get('public')->getData());
             $em = $this->getDoctrine()->getManager();
             $em->persist($role);
             $em->flush($role);

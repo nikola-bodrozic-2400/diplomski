@@ -1,6 +1,27 @@
 security:
-    encoders: { MyCompany\UserBundle\Entity\User: bcrypt }
-    role_hierarchy: { ROLE_ADMIN: ROLE_USER, ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH] }
-    providers: { our_database_users: { entity: { class: 'UserBundle:User' } } }
-    firewalls: { secured_area: { pattern: ^/, form_login: { check_path: login_check, login_path: login_form }, logout: { path: logout, target: news_index }, anonymous: null } }
-    access_control: null
+    encoders:
+        MyCompany\UserBundle\Entity\User: bcrypt
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN:
+            - ROLE_USER
+            - ROLE_ADMIN
+            - ROLE_ALLOWED_TO_SWITCH
+    providers:
+        our_database_users:
+            entity:
+                class: 'UserBundle:User'
+    firewalls:
+        secured_area:
+            pattern: ^/
+            form_login:
+                check_path: login_check
+                login_path: login_form
+            logout:
+                path: logout
+                target: news_index
+            anonymous: null
+    access_control:
+        -
+            path: ^/login
+            roles: IS_AUTHENTICATED_ANONYMOUSLY
