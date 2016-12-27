@@ -29,6 +29,13 @@ class Roles
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="hname", type="string", length=24)
+     */
+    private $hname;
+
+    /**
      * render checkbox for reading
      *
      * @var boolean
@@ -126,5 +133,29 @@ class Roles
     public function getCanReadWrite()
     {
         return $this->canReadWrite;
+    }
+
+    /**
+     * Set hname
+     *
+     * @param string $hname
+     *
+     * @return Roles
+     */
+    public function setHname($hname)
+    {
+        $this->hname = $hname;
+
+        return $this;
+    }
+
+    /**
+     * Get hname
+     *
+     * @return string
+     */
+    public function getHname()
+    {
+        return $this->hname;
     }
 }

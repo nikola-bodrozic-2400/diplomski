@@ -13,7 +13,7 @@ class RolesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('canRead')->add('canReadWrite')        ;
+        $builder->add('name')->add('canRead')->add('canReadWrite')->add('hname')        ;
     }
     
     /**

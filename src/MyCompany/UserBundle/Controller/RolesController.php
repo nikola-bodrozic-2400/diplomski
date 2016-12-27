@@ -49,16 +49,15 @@ class RolesController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $un = $role->getName();
+            $un = "ROLE_".strtoupper($un);
+
             $em = $this->getDoctrine()->getManager();
+            $role->setName($un);
+
             $em->persist($role);
             $em->flush($role);
 
-            //
-            //
-            //
-
-            $un = $role->getName();
-            $un = "ROLE_".strtoupper($un);
             $p = realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR ;
             $value = Yaml::parse(file_get_contents($p.'/security.yml', true));
             array_push($value['security']['access_control'], ['path' => "^/new$", 'roles' => $un] );

@@ -7,9 +7,40 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceList;
 
+/**
+ * Class RegisterFormType
+ *
+ * @package MyCompany\UserBundle\Form
+ */
 class RegisterFormType extends AbstractType
 {
-	public function getBlockPrefix()
+    /**
+     * role koje se dobijaju od dependancy injection
+     *
+     * @var array
+     */
+    private $p = array();
+
+    /**
+     * role koje se prosledjuju parametru choices u bulidForm metodi
+     *
+     * @var array
+     */
+    private $roles4form = array();
+
+    /**
+     * RegisterFormType constructor.
+     *
+     */
+    public function __construct($p)
+    {
+        $this->p = $p;
+        for($i = 0; $i < count($this->p); ++$i) {
+            $this->roles4form[$this->p[$i]->getHname()] = $this->p[$i]->getName();
+        }
+    }
+
+    public function getBlockPrefix()
     {
         return 'user_register';
     }
@@ -27,14 +58,7 @@ class RegisterFormType extends AbstractType
                 'expanded' => false,
                 'multiple' => true,
                 'choices_as_values' => true,
-                'choices' => array(
-                    'Direktor' => 'ROLE_MANAGER',
-                    'Novinar' => 'ROLE_NOVINAR',
-                    'Web Master' => 'ROLE_WM',
-                    'Lektor' => 'ROLE_LEKTOR',
-                    'Knjigovodja' => 'ROLE_KNJIG',
-                    'test4' => 'ROLE_TEST4'
-                )
+                'choices' => $this->roles4form,
             ))
     	;
     }

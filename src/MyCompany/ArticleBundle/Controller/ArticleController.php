@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 use MyCompany\ArticleBundle\Entity\Article;
@@ -40,22 +39,12 @@ class ArticleController extends Controller
     }
 
     /**
-     * @Route("/proba")
-     */
-
-    public function probaTest4RoleAction()
-    {
-        $this->enforceTest4RoleSecurity();
-        return new Response("cestitam role4");
-    }
-
-    /**
      * Creates a new Article entity.
      *
      */
     public function newAction(Request $request)
     {
-        $this->enforceUserSecurity();
+        $this->enforceTest4RoleSecurity(); //$this->enforceUserSecurity();
 
         $article = new Article();
 
@@ -171,9 +160,14 @@ class ArticleController extends Controller
         }
     }
 
+    /**
+     *
+     */
     private function enforceTest4RoleSecurity(){
-        if (!$this->get('security.authorization_checker')->isGranted('ROLE_TEST4')) {
-            throw new AccessDeniedException('only ROLE_TEST4 ima pristup');
+
+        $securityContext = $this->container->get('security.context');
+        if (!$securityContext->isGranted('ROLE_TEST4')) {
+            throw new AccessDeniedException('Need ROLE_TEST4!');
         }
     }
 
@@ -191,8 +185,6 @@ class ArticleController extends Controller
 
     /**
      * @param $id
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectRespons
      */
     public function attendAction($id)
     {

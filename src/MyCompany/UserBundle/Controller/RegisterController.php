@@ -12,7 +12,7 @@ use MyCompany\UserBundle\Form\RegisterFormType;
 class RegisterController extends Controller
 {
     /**
-     * Registracija posetioca sajta
+     * registracija zaposlenog
      *
      * @Route("/register", name="user_register")
      * @Template()
@@ -20,7 +20,11 @@ class RegisterController extends Controller
     public function registerAction(Request $request)
     {
         $user = new User();
-        $form = $this->createForm('MyCompany\UserBundle\Form\RegisterFormType', $user);
+
+        $em = $this->getDoctrine()->getManager();
+        $ro = $em->getRepository('UserBundle:Roles')->findAll();
+
+        $form = $this->createForm(new RegisterFormType($ro), $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $request->getSession()
@@ -32,6 +36,7 @@ class RegisterController extends Controller
 
             $user->setPassword($this->encodePassword($user, $user->getPlainPassword() ));
             $tmpuser =  $form->get('roles')->getData();
+
             $user->setRoles([$tmpuser[0]]);
 
             $em = $this->getDoctrine()->getManager();
@@ -45,6 +50,8 @@ class RegisterController extends Controller
     }
 
     /**
+     * registracija posetioca sajta
+     *
      * @Route("/singup", name="user_signup")
      * @Template()
      */
