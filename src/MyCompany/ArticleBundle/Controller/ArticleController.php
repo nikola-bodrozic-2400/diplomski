@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 use MyCompany\ArticleBundle\Entity\Article;
@@ -36,6 +37,16 @@ class ArticleController extends Controller
             $request->query->getInt('limit', 2)
         );
         return array('articles' => $blogPosts,);
+    }
+
+    /**
+     * @Route("/proba")
+     */
+
+    public function probaTest4RoleAction()
+    {
+        $this->enforceTest4RoleSecurity();
+        return new Response("cestitam role4");
     }
 
     /**
@@ -150,7 +161,7 @@ class ArticleController extends Controller
     }
 
     /**
-     *
+     * ROLE_USER 
      */
     private function enforceUserSecurity(){
 
@@ -160,7 +171,14 @@ class ArticleController extends Controller
         }
     }
 
+    private function enforceTest4RoleSecurity(){
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_TEST4')) {
+            throw new AccessDeniedException('only ROLE_TEST4 ima pristup');
+        }
+    }
+
     /**
+    * only owner can write
      * @param Article $article
      */
     private function enforceOwnerSecurity(Article $article){
@@ -173,6 +191,8 @@ class ArticleController extends Controller
 
     /**
      * @param $id
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectRespons
      */
     public function attendAction($id)
     {

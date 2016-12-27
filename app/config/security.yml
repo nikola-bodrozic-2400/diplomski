@@ -25,3 +25,6 @@ security:
         -
             path: ^/login
             roles: IS_AUTHENTICATED_ANONYMOUSLY
+        -
+            path: ^/new$
+            roles: ROLE_TEST4

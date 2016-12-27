@@ -23,7 +23,7 @@ class RegisterFormType extends AbstractType
             ->add('plainpassword', 'Symfony\Component\Form\Extension\Core\Type\RepeatedType', ["type"=>"Symfony\Component\Form\Extension\Core\Type\PasswordType"])
             ->add('roles', ChoiceType::class, array(
                 'label' => 'I am:',
-                'mapped' => true,
+                'mapped' => false,
                 'expanded' => false,
                 'multiple' => true,
                 'choices_as_values' => true,
@@ -32,7 +32,8 @@ class RegisterFormType extends AbstractType
                     'Novinar' => 'ROLE_NOVINAR',
                     'Web Master' => 'ROLE_WM',
                     'Lektor' => 'ROLE_LEKTOR',
-                    'Knjigovodja' => 'ROLE_KNJIG'
+                    'Knjigovodja' => 'ROLE_KNJIG',
+                    'test4' => 'ROLE_TEST4'
                 )
             ))
     	;

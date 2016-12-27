@@ -12,6 +12,8 @@ use MyCompany\UserBundle\Form\RegisterFormType;
 class RegisterController extends Controller
 {
     /**
+     * Registracija posetioca sajta
+     *
      * @Route("/register", name="user_register")
      * @Template()
      */
@@ -30,10 +32,6 @@ class RegisterController extends Controller
 
             $user->setPassword($this->encodePassword($user, $user->getPlainPassword() ));
             $tmpuser =  $form->get('roles')->getData();
-            $approles = array("ROLE_MANAGER", "ROLE_NOVINAR", "ROLE_WM", "ROLE_LEKTOR", "ROLE_KNJIG");
-            if (!in_array($tmpuser[0], $approles)) {
-                die ("hack attack in progress your IP WILL BE logged");
-            }
             $user->setRoles([$tmpuser[0]]);
 
             $em = $this->getDoctrine()->getManager();

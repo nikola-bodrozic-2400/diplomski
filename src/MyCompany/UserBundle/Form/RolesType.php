@@ -5,7 +5,7 @@ namespace MyCompany\UserBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+
 class RolesType extends AbstractType
 {
     /**
@@ -13,13 +13,7 @@ class RolesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')
-            ->add('public', CheckboxType::class, array(
-            'label'    => 'Show this entry publicly?',
-            'required' => false,
-            'mapped'=>false
-        ))
-        ;
+        $builder->add('name')->add('canRead')->add('canReadWrite')        ;
     }
     
     /**
