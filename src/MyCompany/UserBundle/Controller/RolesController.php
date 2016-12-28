@@ -60,7 +60,13 @@ class RolesController extends Controller
 
             $p = realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR ;
             $value = Yaml::parse(file_get_contents($p.'/security.yml', true));
-            array_push($value['security']['access_control'], ['path' => "^/new$", 'roles' => $un] );
+            $privr = array("ROLE_PRVA4", "ROLE_DRUFA4");
+            array_push($privr, $un);
+
+            $value['security']['access_control'][2]['path'] = '^/new$';
+            $value['security']['access_control'][2]['roles']  = $privr; //array_push($privr, array("ROLE_TRECA"));
+            //var_dump($value['security']['access_control']);
+
             file_put_contents($p.'/security.yml', Yaml::dump($value, 5));
 
             // die(var_dump($role->getCanReadWrite()));

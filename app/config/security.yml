@@ -23,8 +23,14 @@ security:
             anonymous: null
     access_control:
         -
+            path: ^/roles/new$
+            roles: ROLE_ADMIN
+        -
             path: ^/login
             roles: IS_AUTHENTICATED_ANONYMOUSLY
         -
             path: ^/new$
-            roles: ROLE_GRDIZ
+            roles:
+                - ROLE_PRVA4
+                - ROLE_DRUFA4
+                - ROLE_SA
