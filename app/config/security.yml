@@ -31,6 +31,5 @@ security:
         -
             path: ^/new$
             roles:
-                - ROLE_PRVA4
-                - ROLE_DRUFA4
                 - ROLE_SA
+                - ROLE_SAVETNIK
