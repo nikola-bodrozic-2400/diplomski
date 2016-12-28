@@ -1,3 +1,8 @@
+news_index:
+    path:     /
+    defaults: { _controller: "MyCompanyArticleBundle:Article:index" }
+    methods:  GET
+
 news_show:
     path:     /{id}/show
     defaults: { _controller: "MyCompanyArticleBundle:Article:show" }
@@ -17,9 +22,3 @@ news_delete:
     path:     /{id}/delete
     defaults: { _controller: "MyCompanyArticleBundle:Article:delete" }
     methods:  DELETE
-news_attend:
-    path:  /{id}/attend
-    defaults: { _controller: "MyCompanyArticleBundle:Article:attend" }
-news_unattend:
-    path:  /{id}/unattend
-    defaults: { _controller: "MyCompanyArticleBundle:Article:unattend" }

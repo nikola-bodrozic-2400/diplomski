@@ -5,7 +5,6 @@ namespace MyCompany\ArticleBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 use MyCompany\ArticleBundle\Entity\Article;
@@ -19,10 +18,9 @@ use Symfony\Component\Validator\Constraints\DateTime;
 class ArticleController extends Controller
 {
     /**
-     * @Route("/", name="news_index")
-     * @Template()
-     * Lists all Article entities.
+     * Lists all Article entities with pagination
      *
+     * @Template()
      */
     public function indexAction(Request $request)
     {
@@ -38,13 +36,10 @@ class ArticleController extends Controller
         return array('articles' => $blogPosts,);
     }
 
-    /**
-     * Creates a new Article entity.
-     *
-     */
+
+
     public function newAction(Request $request)
     {
-        $this->enforceTest4RoleSecurity(); //$this->enforceUserSecurity();
 
         $article = new Article();
 
@@ -88,7 +83,6 @@ class ArticleController extends Controller
      */
     public function editAction(Request $request, Article $article)
     {
-        $this->enforceUserSecurity();
 
         $deleteForm = $this->createDeleteForm($article);
         $editForm = $this->createForm('MyCompany\ArticleBundle\Form\ArticleType', $article);
@@ -115,7 +109,6 @@ class ArticleController extends Controller
      */
     public function deleteAction(Request $request, Article $article)
     {
-        $this->enforceUserSecurity();
 
         $form = $this->createDeleteForm($article);
 
@@ -150,29 +143,8 @@ class ArticleController extends Controller
     }
 
     /**
-     * ROLE_USER 
-     */
-    private function enforceUserSecurity(){
-
-        $securityContext = $this->container->get('security.context');
-        if (!$securityContext->isGranted('ROLE_USER')) {
-            throw new AccessDeniedException('Need ROLE_USER!');
-        }
-    }
-
-    /**
+     * Samo kreator posta moze da edituje svoj post
      *
-     */
-    private function enforceTest4RoleSecurity(){
-
-        $securityContext = $this->container->get('security.context');
-        if (!$securityContext->isGranted('ROLE_TEST4')) {
-            throw new AccessDeniedException('Need ROLE_TEST4!');
-        }
-    }
-
-    /**
-    * only owner can write
      * @param Article $article
      */
     private function enforceOwnerSecurity(Article $article){
@@ -181,54 +153,5 @@ class ArticleController extends Controller
         if ($user != $article->getOwner()) {
             throw new AccessDeniedException('you are not owner of this article and you cann`t change it');
         }
-    }
-
-    /**
-     * @param $id
-     */
-    public function attendAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        /**
-         * @var $article \MyCompany\ArticleBundle\Entity\Article
-         */
-        $article = $em->getRepository('MyCompanyArticleBundle:Article')->find($id);
-
-        if (!$article) {
-            throw $this->createNotFoundException('No article found for id '.$id);
-        }
-
-        if (!$article->hasWriters($this->getUser())) {
-            $article->getWriters()->add($this->getUser());
-        }
-
-        $em->persist($article);
-        $em->flush();
-        $url = $this->generateUrl('news_show', array('id' => $article->getId()) );
-
-        return $this->redirect($url);
-    }
-
-    public function unattendAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        /**
-         * @var $article \MyCompany\ArticleBundle\Entity\Article
-         */
-        $article = $em->getRepository('MyCompanyArticleBundle:Article')->find($id);
-
-        if (!$article) {
-            throw $this->createNotFoundException('No article found for id '.$id);
-        }
-
-        if ($article->hasWriters($this->getUser())) {
-            $article->getWriters()->removeElement($this->getUser());
-        }
-
-        $em->persist($article);
-        $em->flush();
-        $url = $this->generateUrl('news_show', array('id' => $article->getId()) );
-
-        return $this->redirect($url);
     }
 }

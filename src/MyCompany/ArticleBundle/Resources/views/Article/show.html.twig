@@ -30,16 +30,12 @@
     </script>
 
     <h1>{{ article.title }}</h1>
-    <p class="text-muted"><span class="glyphicon glyphicon-user"></span> {% for w in article.writers %}<strong>{{ w }}</strong>  <strong>{{ w.email | truncate(5)}}</strong>, {% endfor %}
+    <p class="text-muted"><span class="glyphicon glyphicon-user"></span> <strong>{{ article.owner }}</strong>
     <p class="text-muted"><span class="glyphicon glyphicon-time"></span> Posted on: {% if article.time %}{{ article.time|date('H:i d. M Y.') }}{% endif %}</p>
 
     <div id="map" style="float:left;margin-right: 25px;">{{ article.location }}</div>
     <div>{{ article.body }}</div>
     <hr>
-
-{% for w in article.writers %}
-<p><strong>{{ w }}</strong> has mail <strong>{{ w.email | truncate(5)}}</strong></p>
-{% endfor %}
     <ul>
         <li>
             <a href="{{ path('news_edit', { 'id': article.id }) }}">Edit</a>

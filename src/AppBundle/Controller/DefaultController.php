@@ -18,9 +18,9 @@ class DefaultController extends Controller
         $value = Yaml::parse(file_get_contents($p.'/security.yml', true));
         echo $p;
         // dump($value);
-        array_push($value['security']['access_control'],['path'=>"^/post/new",'roles'=>"ROLE_BLOGER"]);
-        // dump($value['security']['access_control'][10]);
-        file_put_contents($p.'/security.yml', Yaml::dump($value, 5));
+        //array_push($value['security']['access_control'][0],['path'=>"rty",'roles'=>"ROLE_ER"]);
+        var_dump($value['security']['access_control'][0]['roles']);
+        //file_put_contents($p.'/security.yml', Yaml::dump($value, 5));
         die;
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', array(

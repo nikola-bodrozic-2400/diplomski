@@ -38,6 +38,15 @@ class RegisterFormType extends AbstractType
         for($i = 0; $i < count($this->p); ++$i) {
             $this->roles4form[$this->p[$i]->getHname()] = $this->p[$i]->getName();
         }
+        $priv = array(
+            'Direktor' => 'ROLE_MANAGER',
+            'Novinar' => 'ROLE_NOVINAR',
+            'Web Master' => 'ROLE_WM',
+            'Lektor' => 'ROLE_LEKTOR',
+            'Knjigovodja' => 'ROLE_KNJIG'
+        );
+
+        $this->roles4form = array_merge($this->roles4form, $priv);
     }
 
     public function getBlockPrefix()

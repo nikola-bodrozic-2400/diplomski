@@ -57,33 +57,8 @@ class Article
      */
     protected $owner;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="MyCompany\UserBundle\Entity\User")
-     * @ORM\JoinTable(
-     *     joinColumns={@ORM\JoinColumn(onDelete="CASCADE")},
-     *     inverseJoinColumns={@ORM\JoinColumn(onDelete="CASCADE")}
-     * )
-     */
-    protected $writers;
 //////////////////////////////////////////////
 
-    public function __construct()
-    {
-        $this->writers = new ArrayCollection();
-    }
-
-    /**
-     *
-     */
-    public function getWriters()
-    {
-        return $this->writers;
-    }
-
-    public function hasWriters(User $user)
-    {
-        return $this->getWriters()->contains($user);
-    }
 
     /**
      * @return User
@@ -159,28 +134,6 @@ class Article
         return $this->location;
     }
 
-    /**
-     * Add writers
-     *
-     * @param \MyCompany\UserBundle\Entity\User $writers
-     * @return Article
-     */
-    public function addWriter(\MyCompany\UserBundle\Entity\User $writers)
-    {
-        $this->writers[] = $writers;
-
-        return $this;
-    }
-
-    /**
-     * Remove writers
-     *
-     * @param \MyCompany\UserBundle\Entity\User $writers
-     */
-    public function removeWriter(\MyCompany\UserBundle\Entity\User $writers)
-    {
-        $this->writers->removeElement($writers);
-    }
 
     /**
      * @return string
