@@ -3,24 +3,28 @@
 {% block body %}
     <h1>Role</h1>
 
-    <table>
+    <table class='table table-bordered table-striped table-hover'>
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ role.id }}</td>
             </tr>
             <tr>
-                <th>Name</th>
+                <th>Sifra uloge</th>
                 <td>{{ role.name }}</td>
             </tr>
             <tr>
-                <th>Canread</th>
+                <th>Can read post</th>
                 <td>{% if role.canRead %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
-                <th>Canreadwrite</th>
+                <th>Can read and write post</th>
                 <td>{% if role.canReadWrite %}Yes{% else %}No{% endif %}</td>
             </tr>
+            <tr>
+                <th>Ime uloge</th>
+                <td>{{ role.hname }}</td>
+            </tr>            
         </tbody>
     </table>
 
