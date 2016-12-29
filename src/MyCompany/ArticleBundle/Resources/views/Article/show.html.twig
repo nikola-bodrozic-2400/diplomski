@@ -35,10 +35,14 @@
 
     <div id="map" style="float:left;margin-right: 25px;">{{ article.location }}</div>
     <div>{{ article.body }}</div>
+
     <hr>
-    <ul>
-        <li>
-            <a href="{{ path('news_edit', { 'id': article.id }) }}">Edit</a>
-        </li>
-    </ul>
+
+    {% if is_granted('ROLE_NOVINAR') %}
+        <ul>
+            <li>
+                <a href="{{ path('news_edit', { 'id': article.id }) }}">Edit</a>
+            </li>
+        </ul>
+    {% endif %}
 {% endblock %}

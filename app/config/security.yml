@@ -2,7 +2,7 @@ security:
     encoders:
         MyCompany\UserBundle\Entity\User: bcrypt
     role_hierarchy:
-        ROLE_ADMIN: ROLE_USER
+        ROLE_ADMIN: ROLE_NOVINAR
         ROLE_SUPER_ADMIN:
             - ROLE_USER
             - ROLE_ADMIN
@@ -33,10 +33,16 @@ security:
             roles:
                 - ROLE_SAVETNIK
                 - ROLE_RW
-                - ROLE_CITALAC
+                - ROLE_NOVINAR
         -
-            path: ^/\d+/show$
+            path: ^/\d+/edit$
             roles:
                 - ROLE_SAVETNIK
                 - ROLE_RW
-                - ROLE_CITALAC
+                - ROLE_NOVINAR
+        -
+            path: ^/\d+/delete$
+            roles:
+                - ROLE_SAVETNIK
+                - ROLE_RW
+                - ROLE_NOVINAR

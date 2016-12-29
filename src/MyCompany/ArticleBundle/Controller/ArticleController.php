@@ -84,6 +84,8 @@ class ArticleController extends Controller
     public function editAction(Request $request, Article $article)
     {
 
+        $this->enforceOwnerSecurity($article);
+
         $deleteForm = $this->createDeleteForm($article);
         $editForm = $this->createForm('MyCompany\ArticleBundle\Form\ArticleType', $article);
         $editForm->handleRequest($request);
@@ -109,10 +111,11 @@ class ArticleController extends Controller
      */
     public function deleteAction(Request $request, Article $article)
     {
+        $this->enforceOwnerSecurity($article);
 
         $form = $this->createDeleteForm($article);
 
-        $this->enforceOwnerSecurity($article);
+
 
         $form->handleRequest($request);
 
@@ -151,7 +154,7 @@ class ArticleController extends Controller
         $user = $this->getUser();
 
         if ($user != $article->getOwner()) {
-            throw new AccessDeniedException('you are not owner of this article and you cann`t change it');
+            throw $this->createAccessDeniedException('you are not owner of this article and you cann`t change it');
         }
     }
 }

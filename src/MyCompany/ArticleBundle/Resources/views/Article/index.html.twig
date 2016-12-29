@@ -11,19 +11,21 @@
                 <th>Time</th>
                 <th>Post text</th>
                 <th>Owner</th>
+                {% if is_granted('ROLE_NOVINAR') %}
                 <th>Actions</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
         {% for article in articles %}
             <tr>
                 <td><a href="{{ path('news_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
-                <td>{{ article.title }}</td>
+                <td><a href="{{ path('news_show', { 'id': article.id }) }}">{{ article.title }}</a></td>
                 <td>{% if article.time %}{{ article.time|date('jS F Y') }}{% endif %}</td>
                 <td>{{ article.body | truncate (200) }}</td>
                 <td>{{ article.owner.username }}</td>
+                {% if is_granted('ROLE_NOVINAR') %}
                 <td>
-
                     <ul>
                         <li>
                             <a href="{{ path('news_show', { 'id': article.id }) }}">show</a>
@@ -38,7 +40,7 @@
                         {% endif %}
                     </ul>
                 </td>
-
+                {% endif %}
             </tr>
         {% endfor %}
         </tbody>
@@ -46,9 +48,11 @@
     <div class="navigation text-center">
         {{ knp_pagination_render(articles) }}
     </div>
+    {% if is_granted('ROLE_NOVINAR') %}
     <ul>
         <li>
             <a href="{{ path('news_new') }}">Create a new entry</a>
         </li>
     </ul>
+    {% endif %}
 {% endblock %}
