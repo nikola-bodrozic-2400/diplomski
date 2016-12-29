@@ -44,5 +44,3 @@ security:
             path: ^/\d+/delete$
             roles:
                 - ROLE_SAVETNIK
-                - ROLE_RW
-                - ROLE_NOVINAR
