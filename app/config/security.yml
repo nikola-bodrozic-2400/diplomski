@@ -34,3 +34,9 @@ security:
                 - ROLE_SAVETNIK
                 - ROLE_RW
                 - ROLE_CITALAC
+        -
+            path: ^/\d+/show$
+            roles:
+                - ROLE_SAVETNIK
+                - ROLE_RW
+                - ROLE_CITALAC                
