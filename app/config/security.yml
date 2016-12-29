@@ -33,3 +33,4 @@ security:
             roles:
                 - ROLE_SAVETNIK
                 - ROLE_RW
+                - ROLE_CITALAC

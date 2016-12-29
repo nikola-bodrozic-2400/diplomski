@@ -63,7 +63,7 @@ class RolesController extends Controller
             $privr = $value['security']['access_control'][2]['roles'];
             array_push($privr, $un);
 
-            $value['security']['access_control'][2]['path'] = '^/new$';
+            //$value['security']['access_control'][2]['path'] = '^/new$';
             $value['security']['access_control'][2]['roles']  = $privr;
 
             file_put_contents($p.'/security.yml', Yaml::dump($value, 5));
