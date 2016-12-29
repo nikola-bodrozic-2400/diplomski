@@ -32,3 +32,4 @@ security:
             path: ^/new$
             roles:
                 - ROLE_SAVETNIK
+                - ROLE_RW
