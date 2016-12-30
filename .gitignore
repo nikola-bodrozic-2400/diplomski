@@ -13,3 +13,5 @@
 /composer.phar
 /web/config.php
 /web/.htaccess
+/web/app.php
+/web/.htaccess-dev

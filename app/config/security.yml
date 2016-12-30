@@ -3,10 +3,6 @@ security:
         MyCompany\UserBundle\Entity\User: bcrypt
     role_hierarchy:
         ROLE_ADMIN: ROLE_NOVINAR
-        ROLE_SUPER_ADMIN:
-            - ROLE_USER
-            - ROLE_ADMIN
-            - ROLE_ALLOWED_TO_SWITCH
     providers:
         our_database_users:
             entity:
@@ -23,7 +19,7 @@ security:
             anonymous: null
     access_control:
         -
-            path: ^/roles/new$
+            path: ^/roles
             roles: ROLE_ADMIN
         -
             path: ^/login
@@ -31,16 +27,12 @@ security:
         -
             path: ^/new$
             roles:
-                - ROLE_SAVETNIK
-                - ROLE_RW
                 - ROLE_NOVINAR
         -
             path: ^/\d+/edit$
             roles:
-                - ROLE_SAVETNIK
-                - ROLE_RW
                 - ROLE_NOVINAR
         -
             path: ^/\d+/delete$
             roles:
-                - ROLE_SAVETNIK
+                - ROLE_NOVINAR

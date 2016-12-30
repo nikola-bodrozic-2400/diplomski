@@ -17,6 +17,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
  */
 class ArticleController extends Controller
 {
+
     /**
      * Lists all Article entities with pagination
      *
@@ -24,6 +25,8 @@ class ArticleController extends Controller
      */
     public function indexAction(Request $request)
     {
+        // var_dump( $this->get('security.token_storage')->getToken()->getUser()->getRoles());die;
+
         $em = $this->getDoctrine()->getManager();
         $articles = $em->getRepository('MyCompanyArticleBundle:Article')->findAll();
         $paginator  = $this->get('knp_paginator');
@@ -152,9 +155,9 @@ class ArticleController extends Controller
      */
     private function enforceOwnerSecurity(Article $article){
         $user = $this->getUser();
-
-        if ($user != $article->getOwner()) {
-            throw $this->createAccessDeniedException('you are not owner of this article and you cann`t change it');
+        $rola = $this->get('security.token_storage')->getToken()->getUser()->getRoles();
+        if ( $user != $article->getOwner() && !in_array("ROLE_ADMIN", $rola) ) {
+            throw $this->createAccessDeniedException('Niste autor ovog posta ni admin, nemate pristup edit resursu');
         }
     }
 }
