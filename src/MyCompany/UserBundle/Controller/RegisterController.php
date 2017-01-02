@@ -37,7 +37,7 @@ class RegisterController extends Controller
             $user->setPassword($this->encodePassword($user, $user->getPlainPassword() ));
             $tmpuser =  $form->get('roles')->getData();
 
-            $user->setRoles([$tmpuser[0]]);
+            $user->setRoles($tmpuser);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
