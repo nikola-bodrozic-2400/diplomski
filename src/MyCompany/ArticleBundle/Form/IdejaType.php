@@ -1,43 +1,32 @@
 <?php
 
-namespace MyCompany\UserBundle\Form;
+namespace MyCompany\ArticleBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RolesType extends AbstractType
+class IdejaType extends AbstractType
 {
     /**
-     * {@inheritdoc}
+     * @param FormBuilderInterface $builder
+     * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('name')
-        ->add('canRead')
-        ->add('canReadWrite')
-        ->add('hname')        
+            ->add('text')
+            ->add('title')
         ;
     }
     
     /**
-     * {@inheritdoc}
+     * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MyCompany\UserBundle\Entity\Roles'
+            'data_class' => 'MyCompany\ArticleBundle\Entity\Ideja'
         ));
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix()
-    {
-        return 'mycompany_userbundle_roles';
-    }
-
-
 }

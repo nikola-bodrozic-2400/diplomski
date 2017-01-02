@@ -1,3 +1,7 @@
+my_company_article_ideja:
+    resource: "@MyCompanyArticleBundle/Controller/IdejaController.php"
+    type:     annotation
+
 user_roles:
     resource: "@UserBundle/Controller/RolesController.php"
     type:     annotation

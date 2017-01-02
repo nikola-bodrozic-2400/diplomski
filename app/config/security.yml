@@ -36,3 +36,13 @@ security:
             path: ^/\d+/delete$
             roles:
                 - ROLE_NOVINAR
+        -
+            path: ^/ideja$
+            roles:
+                - ROLE_PLACEHOLDER
+                - ROLE_ADMIN
+        -
+            path: ^/\d+/edit$
+            roles:
+                - ROLE_PLACEHOLDER
+                - ROLE_ADMIN

@@ -63,13 +63,13 @@ class RolesController extends Controller
             $p = realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR ;
             $value = Yaml::parse(file_get_contents($p.'/security.yml', true));
            
-            $privr = $value['security']['access_control'][2]['roles'];
+            $privr = $value['security']['access_control'][5]['roles'];
             array_push($privr, $un);
-            $value['security']['access_control'][2]['roles']  = $privr;
+            $value['security']['access_control'][5]['roles']  = $privr;
 
-            $privr = $value['security']['access_control'][3]['roles'];
+            $privr = $value['security']['access_control'][6]['roles'];
             array_push($privr, $un);
-            $value['security']['access_control'][3]['roles']  = $privr;
+            $value['security']['access_control'][6]['roles']  = $privr;
 
             file_put_contents($p.'/security.yml', Yaml::dump($value, 5));
 
