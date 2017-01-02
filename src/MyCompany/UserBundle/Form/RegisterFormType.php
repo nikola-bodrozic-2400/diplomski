@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceList;
  */
 class RegisterFormType extends AbstractType
 {
+    private $coreRoles = array();
     /**
      * role koje se dobijaju od dependancy injection
      *
@@ -38,15 +39,13 @@ class RegisterFormType extends AbstractType
         for($i = 0; $i < count($this->p); ++$i) {
             $this->roles4form[$this->p[$i]->getHname()] = $this->p[$i]->getName();
         }
-        $priv = array(
+        $this->coreRoles = array(
             'Direktor' => 'ROLE_MANAGER',
             'Novinar' => 'ROLE_NOVINAR',
             'Web Master' => 'ROLE_WM',
             'Lektor' => 'ROLE_LEKTOR',
             'Knjigovodja' => 'ROLE_KNJIG'
         );
-
-        $this->roles4form = array_merge($this->roles4form, $priv);
     }
 
     public function getBlockPrefix()
@@ -62,12 +61,15 @@ class RegisterFormType extends AbstractType
             ->add('email', 'Symfony\Component\Form\Extension\Core\Type\EmailType', ['attr'=>['class' => 'form-control']])
             ->add('plainpassword', 'Symfony\Component\Form\Extension\Core\Type\RepeatedType', ["type"=>"Symfony\Component\Form\Extension\Core\Type\PasswordType"])
             ->add('roles', ChoiceType::class, array(
-                'label' => 'I am:',
+                'label' => 'Odaberite rolu:',
                 'mapped' => false,
                 'expanded' => false,
                 'multiple' => true,
                 'choices_as_values' => true,
-                'choices' => $this->roles4form,
+                'choices' => array(
+                    'Dodatne role (at run time)' => $this->roles4form,
+                    'Osnovne role' => $this->coreRoles,
+                ),
             ))
     	;
     }

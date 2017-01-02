@@ -52,6 +52,8 @@ class RolesController extends Controller
             $un = $role->getName();
             $un = "ROLE_".strtoupper($un);
 
+// die($role->getCanReadWrite()." ". $role->getCanRead());
+
             $em = $this->getDoctrine()->getManager();
             $role->setName($un);
 
