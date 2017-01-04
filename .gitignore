@@ -1,6 +1,4 @@
 /.idea
-/web/.htaccess
-/web/app.php
 /web/bundles/
 /app/bootstrap.php.cache
 /app/cache/*
