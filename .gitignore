@@ -1,4 +1,6 @@
 /.idea
+/web/.htaccess
+/web/app.php
 /web/bundles/
 /app/bootstrap.php.cache
 /app/cache/*
@@ -12,6 +14,5 @@
 /bin/
 /composer.phar
 /web/config.php
-/web/.htaccess
-/web/app.php
 /web/.htaccess-dev
+/.htaccess
