@@ -3,10 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 30, 2016 at 12:44 PM
+-- Generation Time: Jan 04, 2017 at 05:48 PM
 -- Server version: 5.7.16-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -64,8 +65,21 @@ CREATE TABLE `sym_article` (
 --
 
 INSERT INTO `sym_article` (`id`, `owner_id`, `title`, `time`, `location`, `body`) VALUES
-(20, 23, 'Testovi monitora', '2016-05-08 09:00:00', '44.817457, 20.464354', 'When its, 2560 x 1440 models with 144Hz+ refresh rates have proven popular choices for those wanting a combination of speed and image performance. Models like the Dell S2716DG combine exceptional responsiveness with attractive features such as a 2560 x 1440 resolution and the inclusion of Nvidia G-SYNC variable refresh rate technologies. Some users prefer either smaller screens, a slightly higher pixel density, something a little cheaper or perhaps a combination of these. The AOC AG241QX, of the company’s new AGON range, heeds the call of such users. This shrinks things down into a 23.8” screen size, keeping key attractive features such as a 144Hz refresh rate and 2560 x 1440 resolution. We take a look at this model and see whether this product is as interesting in practice as it is on paper.\r\n\r\nSpecifications\r\n\r\nThe monitor uses a 23.8” TN (Twisted Nematic) panel with support for a 144Hz refresh rate. This panel offers true 8-bit colour without dithering and boasts a 1ms grey to grey response time. As usual you shouldn’t put too much weight into such a specification. Some of the key ‘talking points’ of this monitor have been highlighted in blue below.'),
+(20, 23, 'Tes', '2016-05-08 09:00:00', '44.817457, 20.464354', 'odels with 144Hz+ refresh rates have proven popular choices for those wanting a combination of speed and image performance. Models like the Dell S2716DG combine exceptional responsiveness with attractive features such as a 2560 x 1440 resolution and the inclusion of Nvidia G-SYNC variable refresh rate technologies. Some users prefer either smaller screens, a slightly higher pixel density, something a little cheaper or perhaps a combination of these. The AOC AG241QX, of the company’s new AGON range, heeds the call of such users. This shrinks things down into a 23.8” screen size, keeping key attractive features such as a 144Hz refresh rate and 2560 x 1440 resolution. We take a look at this model and see whether this product is as interesting in practice as it is on paper.\r\n\r\nSpecifications\r\n\r\nThe monitor uses a 23.8” TN (Twisted Nematic) panel with support for a 144Hz refresh rate. This panel offers true 8-bit colour without dithering and boasts a 1ms grey to grey response time. As usual you shouldn’t put too much weight into such a specification. Some of the key ‘talking points’ of this monitor have been highlighted in blue below.'),
 (24, 24, 'Printer of year', '2011-01-01 00:00:00', '44.817457, 20.464354', 'sit amet, consectetur adipiscing elit. Mauris ornare lorem vel metus varius semper. Nulla molestie nulla id tellus elementum finibus. Nulla condimentum mauris sed loreulis nec a arcu. Curabitur nisl tellus, vulputate a erat in, aliquam pulvinar lorem. Sed in pretium sem. Suspendisse potenti. Sed vitae libero maximus, mattis magna in, eleifend lacus. Etiam blandit vehicula mauris, ut lacinia ante condimentum eu.\r\n\r\nAenean maximus quam eu dolor pharetra euismod. Fusce vitae porta neque. Fusce vestibulum neque lacus, nec viverra nulla feugiat at. Fusce non venenatis odio, id congue elit. In luctus risus id turpis ornare aliquet. Vestibulum efficitur mollis quam, ut consectetur metus lacinia in. Vivamus ut dictum libero. Integer erat augue, dictum quis auctor et, eleifend vitae lacus. Ut cursus accumsan lorem ac congue. Suspendisse laoreet suscipit dignissim. Aliquam vehicula efficitur urna sit amet pharetra. Suspendisse sed tempor justo, a commodo justo. Proin ut sem risus. Ut consectetur velit quis sollicitudin bibendum. Ut congue, mauris quis sagittis fermentum, diam ante euismod ante, sit amet ornare augue dolor eget elit.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sym_ideja`
+--
+
+DROP TABLE IF EXISTS `sym_ideja`;
+CREATE TABLE `sym_ideja` (
+  `id` int(11) NOT NULL,
+  `text` longtext COLLATE utf8_unicode_ci,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -144,6 +158,12 @@ ALTER TABLE `sym_article`
   ADD KEY `IDX_B8677DCD7E3C61F9` (`owner_id`);
 
 --
+-- Indexes for table `sym_ideja`
+--
+ALTER TABLE `sym_ideja`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sym_roles`
 --
 ALTER TABLE `sym_roles`
@@ -166,6 +186,11 @@ ALTER TABLE `sym_user`
 --
 ALTER TABLE `sym_article`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+--
+-- AUTO_INCREMENT for table `sym_ideja`
+--
+ALTER TABLE `sym_ideja`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `sym_roles`
 --
@@ -192,6 +217,7 @@ ALTER TABLE `article_user`
 --
 ALTER TABLE `sym_article`
   ADD CONSTRAINT `FK_B8677DCD7E3C61F9` FOREIGN KEY (`owner_id`) REFERENCES `sym_user` (`id`) ON DELETE CASCADE;
+SET FOREIGN_KEY_CHECKS=1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
