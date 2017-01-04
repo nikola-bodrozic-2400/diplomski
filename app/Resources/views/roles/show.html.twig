@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Role</h1>
+    <h1>Rola</h1>
 
     <table class='table table-bordered table-striped table-hover'>
         <tbody>
@@ -14,11 +14,11 @@
                 <td>{{ role.name }}</td>
             </tr>
             <tr>
-                <th>Can read post</th>
+                <th>Može da čita</th>
                 <td>{% if role.canRead %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
-                <th>Can read and write post</th>
+                <th>Može da čita i piše</th>
                 <td>{% if role.canReadWrite %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
@@ -30,14 +30,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('roles_index') }}">Back to the list</a>
+            <a href="{{ path('roles_index') }}">Nazad na listu</a>
         </li>
         <li>
-            <a href="{{ path('roles_edit', { 'id': role.id }) }}">Edit</a>
+            <a href="{{ path('roles_edit', { 'id': role.id }) }}">Edituj</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Obrisati">
             {{ form_end(delete_form) }}
         </li>
     </ul>

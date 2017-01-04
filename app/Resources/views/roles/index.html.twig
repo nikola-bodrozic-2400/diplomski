@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Roles list</h1>
+    <h1>Lista rola</h1>
 
     <table class='table table-bordered table-striped table-hover'>
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Can Read Post</th>
-                <th>Can Read and Write Post</th>
-                <th>Actions</th>
+                <th>Ime</th>
+                <th>Može da čita</th>
+                <th>Može da čita i piše</th>
+                <th>Akcija</th>
             </tr>
         </thead>
         <tbody>
@@ -23,10 +23,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('roles_show', { 'id': role.id }) }}">show</a>
+                            <a href="{{ path('roles_show', { 'id': role.id }) }}">prikaži</a>
                         </li>
                         <li>
-                            <a href="{{ path('roles_edit', { 'id': role.id }) }}">edit</a>
+                            <a href="{{ path('roles_edit', { 'id': role.id }) }}">edituj</a>
                         </li>
                     </ul>
                 </td>
@@ -37,7 +37,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('roles_new') }}">Create a new role</a>
+            <a href="{{ path('roles_new') }}">Napravi novu rolu</a>
         </li>
     </ul>
 {% endblock %}

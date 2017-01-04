@@ -42,7 +42,7 @@ security:
                 - ROLE_PLACEHOLDER
                 - ROLE_ADMIN
         -
-            path: ^/\d+/edit$
+            path: ^/ideja/\d+/edit$
             roles:
                 - ROLE_PLACEHOLDER
                 - ROLE_ADMIN

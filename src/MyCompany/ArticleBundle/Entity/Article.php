@@ -5,7 +5,7 @@ namespace MyCompany\ArticleBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use MyCompany\UserBundle\Entity\User;
 use Doctrine\Common\Collections\ArrayCollection;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Article
  *
@@ -46,7 +46,7 @@ class Article
 
     /**
      * @var string
-     *
+     * @Assert\Length(min = 8, minMessage="ovo polje ne sme biti krace od 8 karaktera")
      * @ORM\Column(name="body", type="text", nullable=true)
      */
     private $body;

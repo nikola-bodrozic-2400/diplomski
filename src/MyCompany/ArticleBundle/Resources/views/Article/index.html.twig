@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Article list</h1>
+    <h1>Blog</h1>
 
     <table class="table table-bordered table-striped table-hover">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Title</th>
-                <th>Time</th>
-                <th>Post text</th>
-                <th>Owner</th>
+                <th>Naslov</th>
+                <th>Vreme objavljivanja</th>
+                <th>Sažeto</th>
+                <th>Autor</th>
                 {% if is_granted('ROLE_NOVINAR') %}
-                <th>Actions</th>
+                <th>Akcije</th>
                 {% endif %}
             </tr>
         </thead>
@@ -28,14 +28,14 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('news_show', { 'id': article.id }) }}">show</a>
+                            <a href="{{ path('news_show', { 'id': article.id }) }}">prikaži</a>
                         </li>
                         <li>
-                            <a href="{{ path('news_edit', { 'id': article.id }) }}">edit</a>
+                            <a href="{{ path('news_edit', { 'id': article.id }) }}">edituj</a>
                         </li>
                         {% if app.user == article.owner %}
                         <li>
-                            You are owner
+                            Vi ste autor
                         </li>
                         {% endif %}
                     </ul>
@@ -51,7 +51,7 @@
     {% if is_granted('ROLE_NOVINAR') %}
     <ul>
         <li>
-            <a href="{{ path('news_new') }}">Create a new entry</a>
+            <a href="{{ path('news_new') }}">Napravite novi post</a>
         </li>
     </ul>
     {% endif %}

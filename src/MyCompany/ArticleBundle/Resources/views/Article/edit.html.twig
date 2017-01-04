@@ -1,19 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Article edit</h1>
+    <h1>Uredi post</h1>
 
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input  class="btn btn-info" type="submit" value="Update" />
+
+<div>
+    {{ form_label(edit_form.title, 'Naslov') }}
+    {{ form_errors(edit_form.title) }}
+    {{ form_widget(edit_form.title) }}
+</div>
+<div>
+    {{ form_label(edit_form.time, 'Vreme') }}
+    {{ form_errors(edit_form.time) }}
+    {{ form_widget(edit_form.time) }}
+</div>
+<div>
+    {{ form_label(edit_form.location, 'Lokacija') }}
+    {{ form_errors(edit_form.location) }}
+    {{ form_widget(edit_form.location) }}
+</div>
+<div>
+    {{ form_label(edit_form.body, 'Tekst') }}
+    {{ form_errors(edit_form.body }}
+    {{ form_widget(edit_form.body) }}
+</div>
+        <input  class="btn btn-info" type="submit" value="Ažuriraj" />
     {{ form_end(edit_form) }}
+
 
     <ul  class="list-unstyled">
         <li>
             &nbsp;
         </li>
         <li>
-            <a class="btn btn-info" href="{{ path('news_index') }}">Cancel</a>
+            <a class="btn btn-info" href="{{ path('news_index') }}">Otkaži</a>
         </li>
 
         <li>
@@ -21,7 +42,7 @@
             </li>
         <li>
             {{ form_start(delete_form) }}
-                <input class="btn btn-warning" type="submit" value="Delete">
+                <input class="btn btn-warning" type="submit" value="Obrisati">
             {{ form_end(delete_form) }}
         </li>
     </ul>

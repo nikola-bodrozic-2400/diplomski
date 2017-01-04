@@ -3,7 +3,7 @@
     {% block body %}
         <section class="login">
             <article>
-                <h1>Register</h1>
+                <h1>Registruj zaposlenog</h1>
 
                 <form action="{{ path('user_register') }}" method="POST" novalidate>
                     {{ form_errors(form) }}
@@ -15,7 +15,7 @@
                     {{ form_row( form.plainpassword.second, {"label":"Repeat password", 'attr' : { 'class' : 'form-control' }} ) }}
                     {{ form_rest(form) }}           
                     <br>                          
-                    <input type="submit" class="btn btn-primary pull-left" value="Register!" />
+                    <input type="submit" class="btn btn-primary pull-left" value="Registruj" />
                 </form>
             </article>
         </section>

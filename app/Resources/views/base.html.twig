@@ -43,17 +43,17 @@
                             </li>
                             {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
                             <li{% if strana =="user_signup" %} class='active'{% endif %}>
-                                    <a href="{{ path('user_signup') }}">Sing Up</a>
+                                    <a href="{{ path('user_signup') }}">Registruj se</a>
                             </li>
                             {% endif %}
                             {% if is_granted('ROLE_ADMIN') %}
                             <li{% if strana =="user_register" %} class='active'{% endif %}>
-                                <a href="{{ path('user_register') }}">Register Employee</a>
+                                <a href="{{ path('user_register') }}">Registruj zaposlenog</a>
                             </li>
                             {% endif %}
                             {% if is_granted('ROLE_ADMIN') %}
                             <li{% if strana =="roles_index" %} class='active'{% endif %}>
-                                <a href="{{ path('roles_index') }}">Role management</a>
+                                <a href="{{ path('roles_index') }}">Lista rola</a>
                             </li>
                             {% endif %}                            
                         </ul>
