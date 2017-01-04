@@ -5,27 +5,22 @@
 
     {{ form_start(edit_form) }}
 
-<div>
-    {{ form_label(edit_form.title, 'Naslov') }}
-    {{ form_errors(edit_form.title) }}
-    {{ form_widget(edit_form.title) }}
-</div>
-<div>
-    {{ form_label(edit_form.time, 'Vreme') }}
-    {{ form_errors(edit_form.time) }}
-    {{ form_widget(edit_form.time) }}
-</div>
-<div>
-    {{ form_label(edit_form.location, 'Lokacija') }}
-    {{ form_errors(edit_form.location) }}
-    {{ form_widget(edit_form.location) }}
-</div>
-<div>
-    {{ form_label(edit_form.body, 'Tekst') }}
-    {{ form_errors(edit_form.body }}
-    {{ form_widget(edit_form.body) }}
-</div>
-        <input  class="btn btn-info" type="submit" value="Ažuriraj" />
+        <div>
+            {{ form_row(edit_form.title) }}
+        </div>
+        <div>
+            {{ form_row(edit_form.time) }}
+        </div>
+        <div>
+            {{ form_row(edit_form.location) }}
+        </div>
+        <div>
+            {{ form_row(edit_form.body) }}
+        </div>
+        <div>
+            <input  class="btn btn-info" type="submit" value="Ažuriraj" />
+        </div>
+        {{ form_rest(edit_form) }}
     {{ form_end(edit_form) }}
 
 
