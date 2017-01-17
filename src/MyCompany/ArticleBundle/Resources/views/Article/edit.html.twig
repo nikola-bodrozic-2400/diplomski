@@ -18,6 +18,12 @@
             {{ form_row(edit_form.body) }}
         </div>
         <div>
+            {{ form_row(edit_form.preview) }}
+        </div>
+        <div>
+            {{ form_row(edit_form.progres) }}
+        </div>
+        <div>
             <input  class="btn btn-info" type="submit" value="Ažuriraj" />
         </div>
         {{ form_rest(edit_form) }}
@@ -34,10 +40,9 @@
 
         <li>
             &nbsp;
-            </li>
+        </li>
         <li>
             {{ form_start(delete_form) }}
-                <input class="btn btn-warning" type="submit" value="Obrisati">
             {{ form_end(delete_form) }}
         </li>
     </ul>

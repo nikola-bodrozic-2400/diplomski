@@ -144,12 +144,17 @@ class ArticleController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('news_delete', array('id' => $article->getId())))
             ->setMethod('DELETE')
+            ->add(
+                'submit',
+                'Symfony\Component\Form\Extension\Core\Type\SubmitType',
+                ['label'=>'Obriši', 'attr' => ['onclick'=>'return confirm("Da li ste sigurni?")', 'class' => 'btn btn-danger']]
+            )
             ->getForm()
         ;
     }
 
     /**
-     * Samo kreator posta moze da edituje svoj post
+     * Samo kreator posta i admin moze da edituje svoj post
      *
      * @param Article $article
      */

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 04, 2017 at 05:48 PM
+-- Generation Time: Jan 17, 2017 at 11:56 PM
 -- Server version: 5.7.16-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
@@ -57,16 +57,17 @@ CREATE TABLE `sym_article` (
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `time` datetime NOT NULL,
   `location` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `body` longtext COLLATE utf8_unicode_ci
+  `body` longtext COLLATE utf8_unicode_ci,
+  `preview` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'da li je post u preview modu',
+  `progres` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `sym_article`
 --
 
-INSERT INTO `sym_article` (`id`, `owner_id`, `title`, `time`, `location`, `body`) VALUES
-(20, 23, 'Tes', '2016-05-08 09:00:00', '44.817457, 20.464354', 'odels with 144Hz+ refresh rates have proven popular choices for those wanting a combination of speed and image performance. Models like the Dell S2716DG combine exceptional responsiveness with attractive features such as a 2560 x 1440 resolution and the inclusion of Nvidia G-SYNC variable refresh rate technologies. Some users prefer either smaller screens, a slightly higher pixel density, something a little cheaper or perhaps a combination of these. The AOC AG241QX, of the company’s new AGON range, heeds the call of such users. This shrinks things down into a 23.8” screen size, keeping key attractive features such as a 144Hz refresh rate and 2560 x 1440 resolution. We take a look at this model and see whether this product is as interesting in practice as it is on paper.\r\n\r\nSpecifications\r\n\r\nThe monitor uses a 23.8” TN (Twisted Nematic) panel with support for a 144Hz refresh rate. This panel offers true 8-bit colour without dithering and boasts a 1ms grey to grey response time. As usual you shouldn’t put too much weight into such a specification. Some of the key ‘talking points’ of this monitor have been highlighted in blue below.'),
-(24, 24, 'Printer of year', '2011-01-01 00:00:00', '44.817457, 20.464354', 'sit amet, consectetur adipiscing elit. Mauris ornare lorem vel metus varius semper. Nulla molestie nulla id tellus elementum finibus. Nulla condimentum mauris sed loreulis nec a arcu. Curabitur nisl tellus, vulputate a erat in, aliquam pulvinar lorem. Sed in pretium sem. Suspendisse potenti. Sed vitae libero maximus, mattis magna in, eleifend lacus. Etiam blandit vehicula mauris, ut lacinia ante condimentum eu.\r\n\r\nAenean maximus quam eu dolor pharetra euismod. Fusce vitae porta neque. Fusce vestibulum neque lacus, nec viverra nulla feugiat at. Fusce non venenatis odio, id congue elit. In luctus risus id turpis ornare aliquet. Vestibulum efficitur mollis quam, ut consectetur metus lacinia in. Vivamus ut dictum libero. Integer erat augue, dictum quis auctor et, eleifend vitae lacus. Ut cursus accumsan lorem ac congue. Suspendisse laoreet suscipit dignissim. Aliquam vehicula efficitur urna sit amet pharetra. Suspendisse sed tempor justo, a commodo justo. Proin ut sem risus. Ut consectetur velit quis sollicitudin bibendum. Ut congue, mauris quis sagittis fermentum, diam ante euismod ante, sit amet ornare augue dolor eget elit.');
+INSERT INTO `sym_article` (`id`, `owner_id`, `title`, `time`, `location`, `body`, `preview`, `progres`) VALUES
+(25, 46, 'qweqweqwe', '2012-01-01 00:00:00', '44.817457, 20.464354', 'sliderrtytyrtyrtyrty', 1, 44);
 
 -- --------------------------------------------------------
 
@@ -101,8 +102,7 @@ CREATE TABLE `sym_roles` (
 --
 
 INSERT INTO `sym_roles` (`id`, `name`, `can_read`, `can_rw`, `hname`) VALUES
-(67, 'ROLE_SAVETNIK', 0, 0, 'savetnik'),
-(68, 'ROLE_RW', 1, 1, 'rw');
+(67, 'ROLE_SAVETNIK', 0, 0, 'savetnik');
 
 -- --------------------------------------------------------
 
@@ -130,7 +130,8 @@ INSERT INTO `sym_user` (`id`, `username`, `password`, `roles`, `is_active`, `ema
 (24, 'mike', '$2y$13$LwYWEcyei1UjcC2cmGJZ5OvH.BJVyRksDKd4LMOntg3EW2OwXUZ66', '["ROLE_NOVINAR"]', 1, 'mike@example.com', 'michael'),
 (25, 'admin', '$2y$13$DqDmj06uFq2oGNnkXOahCe4e9VyvDKf1d/VL.ibwaIfzwwxgDtWye', '["ROLE_ADMIN"]', 1, 'admin@example.com', 'administrator'),
 (44, 'sav', '$2y$13$fDF5RAqlEDbn9dYFzBuqYeTPCuUdxOUrZQRqbv5gxOdcjcTfU.0Pe', '["ROLE_SAVETNIK"]', 1, 'wesdfsr@wer.lm', 'savetnik'),
-(45, 'we', '$2y$13$DJx3KavW677PeYX2iweN6.NWZ9sPgXlZICe.XTnzMadwi5w2OQBOi', '["ROLE_RW"]', 1, 'qe@q.m', 'we');
+(45, 'we', '$2y$13$DJx3KavW677PeYX2iweN6.NWZ9sPgXlZICe.XTnzMadwi5w2OQBOi', '["ROLE_RW"]', 1, 'qe@q.m', 'we'),
+(46, 'test4', '$2y$13$DFJlvBAWl3t0TXjjqoViyu/Ylj7rA88vX0ZqnO614mumoTX9ZFfzi', '["ROLE_NOVINAR"]', 1, 'ssss@www.yu', 'test4');
 
 --
 -- Indexes for dumped tables
@@ -185,7 +186,7 @@ ALTER TABLE `sym_user`
 -- AUTO_INCREMENT for table `sym_article`
 --
 ALTER TABLE `sym_article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `sym_ideja`
 --
@@ -200,7 +201,7 @@ ALTER TABLE `sym_roles`
 -- AUTO_INCREMENT for table `sym_user`
 --
 ALTER TABLE `sym_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- Constraints for dumped tables
 --

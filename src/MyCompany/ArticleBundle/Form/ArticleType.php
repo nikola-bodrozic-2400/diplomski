@@ -19,9 +19,16 @@ class ArticleType extends AbstractType
             ->add('time', 'Symfony\Component\Form\Extension\Core\Type\DateTimeType', ['label' => 'Vreme'] )
             ->add('location', 'Symfony\Component\Form\Extension\Core\Type\TextType', ['label' => 'Lokacija'] )
             ->add('body', 'Symfony\Component\Form\Extension\Core\Type\TextareaType', ['label' => 'Tekst'] )
+            ->add('preview', 'Symfony\Component\Form\Extension\Core\Type\CheckboxType', ['label' => 'Preview'] )
+            ->add(
+                'progres',
+                'Symfony\Component\Form\Extension\Core\Type\RangeType',
+                ['label' => 'progres od 0-100%'],
+                [ 'attr' => ['min' => 1,'max' => 100] ]
+            )
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

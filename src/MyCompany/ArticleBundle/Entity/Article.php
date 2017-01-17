@@ -45,6 +45,20 @@ class Article
     private $location;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="progres", type="integer")
+     */
+    private $progres;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="preview", type="boolean")
+     */
+    private $preview;
+
+    /**
      * @var string
      * @Assert\Length(min = 8, minMessage="ovo polje ne sme biti krace od 8 karaktera")
      * @ORM\Column(name="body", type="text", nullable=true)
@@ -165,5 +179,52 @@ class Article
     public function setBody($body)
     {
         $this->body = $body;
+    }
+
+    /**
+     * Set progres
+     *
+     * @param integer $progres
+     * @return Article
+     */
+    public function setProgres($progres)
+    {
+        $this->progres = $progres;
+
+        return $this;
+    }
+
+    /**
+     * Get progres
+     *
+     * @return integer 
+     */
+    public function getProgres()
+    {
+        return $this->progres;
+    }
+
+
+    /**
+     * Set preview
+     *
+     * @param boolean $preview
+     * @return Article
+     */
+    public function setPreview($preview)
+    {
+        $this->preview = $preview;
+
+        return $this;
+    }
+
+    /**
+     * Get preview
+     *
+     * @return boolean 
+     */
+    public function getPreview()
+    {
+        return $this->preview;
     }
 }
