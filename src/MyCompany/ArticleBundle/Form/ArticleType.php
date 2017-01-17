@@ -24,7 +24,7 @@ class ArticleType extends AbstractType
                 'progres',
                 'Symfony\Component\Form\Extension\Core\Type\RangeType',
                 ['label' => 'progres od 0-100%'],
-                [ 'attr' => ['min' => 1,'max' => 100] ]
+                [ 'attr' => ['min' => 1,'max' => 100, ] ]
             )
         ;
     }
@@ -35,7 +35,8 @@ class ArticleType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MyCompany\ArticleBundle\Entity\Article'
+            'data_class' => 'MyCompany\ArticleBundle\Entity\Article',
+            'attr' => array('novalidate'=>'novalidate'),
         ));
     }
 }
