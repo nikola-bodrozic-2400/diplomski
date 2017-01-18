@@ -50,7 +50,12 @@
                             <li{% if strana =="roles_index" %} class='active'{% endif %}>
                                 <a href="{{ path('roles_index') }}">Lista rola</a>
                             </li>
-                            {% endif %}                            
+                            {% endif %}
+                            {% if is_granted('ROLE_MANAGER') %}
+                                <li{% if strana =="news_direktor" %} class='active'{% endif %}>
+                                    <a href="{{ path('news_direktor') }}">Direktor</a>
+                                </li>
+                            {% endif %}
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div><!--/.container-fluid -->

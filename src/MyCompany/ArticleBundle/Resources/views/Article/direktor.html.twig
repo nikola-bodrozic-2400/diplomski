@@ -8,9 +8,10 @@
             <tr>
                 <th>Id</th>
                 <th>Naslov</th>
-                <th>Vreme objavljivanja</th>
+                <th>Datum objavljivanja</th>
                 <th>Sažeto</th>
                 <th>Autor</th>
+                <th>Progres</th>
                 {% if is_granted('ROLE_NOVINAR') %}
                 <th>Akcije</th>
                 {% endif %}
@@ -24,6 +25,7 @@
                 <td>{% if article.time %}{{ article.time|date('jS F Y') }}{% endif %}</td>
                 <td>{{ article.body | truncate (200) }}</td>
                 <td>{{ article.owner.username }}</td>
+                <td>{{ article.progres }}</td>
                 {% if is_granted('ROLE_NOVINAR') %}
                 <td>
                     <ul>
