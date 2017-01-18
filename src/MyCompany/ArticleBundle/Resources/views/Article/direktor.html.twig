@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>direktor</h1>
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Naslov</th>
+                <th>Vreme objavljivanja</th>
+                <th>Sažeto</th>
+                <th>Autor</th>
+                {% if is_granted('ROLE_NOVINAR') %}
+                <th>Akcije</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td><a href="{{ path('news_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
+                <td><a href="{{ path('news_show', { 'id': article.id }) }}">{{ article.title }}</a></td>
+                <td>{% if article.time %}{{ article.time|date('jS F Y') }}{% endif %}</td>
+                <td>{{ article.body | truncate (200) }}</td>
+                <td>{{ article.owner.username }}</td>
+                {% if is_granted('ROLE_NOVINAR') %}
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('news_show', { 'id': article.id }) }}">prikaži</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('news_edit', { 'id': article.id }) }}">edituj</a>
+                        </li>
+                        {% if app.user == article.owner %}
+                        <li>
+                            Vi ste autor
+                        </li>
+                        {% endif %}
+                    </ul>
+                </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation text-center">
+        {{ knp_pagination_render(articles) }}
+    </div>
+    {% if is_granted('ROLE_NOVINAR') %}
+    <ul>
+        <li>
+            <a href="{{ path('news_new') }}">Napravite novi post</a>
+        </li>
+    </ul>
+    {% endif %}
+{% endblock %}

@@ -28,7 +28,7 @@ class ArticleController extends Controller
         // var_dump( $this->get('security.token_storage')->getToken()->getUser()->getRoles());die;
 
         $em = $this->getDoctrine()->getManager();
-        $articles = $em->getRepository('MyCompanyArticleBundle:Article')->findAll();
+        $articles = $em->getRepository('MyCompanyArticleBundle:Article')->findBy( ['preview' => 0] );
         $paginator  = $this->get('knp_paginator');
 
         $blogPosts = $paginator->paginate(
@@ -39,6 +39,26 @@ class ArticleController extends Controller
         return array('articles' => $blogPosts,);
     }
 
+    /**
+     * Lists all Article entities with pagination
+     *
+     * @Template()
+     */
+    public function direktorAction(Request $request)
+    {
+        // var_dump( $this->get('security.token_storage')->getToken()->getUser()->getRoles());die;
+
+        $em = $this->getDoctrine()->getManager();
+        $articles = $em->getRepository('MyCompanyArticleBundle:Article')->findAll();
+        $paginator  = $this->get('knp_paginator');
+
+        $blogPosts = $paginator->paginate(
+            $articles,
+            $request->query->getInt('page', 1),
+            $request->query->getInt('limit', 2)
+        );
+        return array('articles' => $blogPosts,);
+    }
 
 
     public function newAction(Request $request)
@@ -67,10 +87,31 @@ class ArticleController extends Controller
     }
 
     /**
-     * Finds and displays a Article entity.
-     *
+     * @param Article $article
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction(Article $article)
+    {
+        if($article->getPreview() == 0)
+        {
+            $deleteForm = $this->createDeleteForm($article);
+            return $this->render('MyCompanyArticleBundle:Article:show.html.twig', array(
+                'article' => $article,
+                'delete_form' => $deleteForm->createView(),
+            ));
+        }
+        else
+        {
+            die('Post je u preview modu. <br> Morate biti ulogovani kao zaposleni redakcije ili naručilac da bi videli ovu stranu. <a href="/login">Uloguj te se</a>');
+        }
+    }
+
+
+    /**
+     * Finds and displays a Article entity.
+     *
+
+    public function previewAction(Article $article)
     {
         $deleteForm = $this->createDeleteForm($article);
 
@@ -78,7 +119,7 @@ class ArticleController extends Controller
             'article' => $article,
             'delete_form' => $deleteForm->createView(),
         ));
-    }
+    }*/
 
     /**
      * Displays a form to edit an existing Article entity.
@@ -117,8 +158,6 @@ class ArticleController extends Controller
         $this->enforceOwnerSecurity($article);
 
         $form = $this->createDeleteForm($article);
-
-
 
         $form->handleRequest($request);
 

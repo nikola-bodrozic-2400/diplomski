@@ -3,6 +3,11 @@ news_index:
     defaults: { _controller: "MyCompanyArticleBundle:Article:index" }
     methods:  GET
 
+news_direktor:
+    path:     /direktor
+    defaults: { _controller: "MyCompanyArticleBundle:Article:direktor" }
+    methods:  GET
+
 news_show:
     path:     /{id}/show
     defaults: { _controller: "MyCompanyArticleBundle:Article:show" }
