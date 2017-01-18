@@ -92,7 +92,7 @@ class ArticleController extends Controller
      */
     public function showAction(Article $article)
     {
-        if($article->getPreview() == 0)
+        if($article->getPreview() == 0 || $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY'))
         {
             $deleteForm = $this->createDeleteForm($article);
             return $this->render('MyCompanyArticleBundle:Article:show.html.twig', array(

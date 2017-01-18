@@ -41,11 +41,6 @@
                                                                  <a href="{{ path('login_form') }}">Login</a>
                                                             {% endif %}
                             </li>
-                            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                            <li{% if strana =="user_signup" %} class='active'{% endif %}>
-                                    <a href="{{ path('user_signup') }}">Registruj se</a>
-                            </li>
-                            {% endif %}
                             {% if is_granted('ROLE_ADMIN') %}
                             <li{% if strana =="user_register" %} class='active'{% endif %}>
                                 <a href="{{ path('user_register') }}">Registruj zaposlenog</a>
