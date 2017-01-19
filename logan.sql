@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 17, 2017 at 11:56 PM
+-- Generation Time: Jan 18, 2017 at 11:53 PM
 -- Server version: 5.7.16-0ubuntu0.16.04.1
--- PHP Version: 7.0.8-0ubuntu0.16.04.3
+-- PHP Version: 7.0.13-0ubuntu0.16.04.1
 
 SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -67,7 +67,8 @@ CREATE TABLE `sym_article` (
 --
 
 INSERT INTO `sym_article` (`id`, `owner_id`, `title`, `time`, `location`, `body`, `preview`, `progres`) VALUES
-(25, 46, 'qweqweqwe', '2012-01-01 00:00:00', '44.817457, 20.464354', 'sliderrtytyrtyrtyrty', 1, 44);
+(1, 48, 'mikin post', '2012-01-01 00:00:00', '44.817457, 20.464354', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum', 1, 12),
+(2, 49, 'perin post', '2012-01-01 00:00:00', '44.817457, 20.464354', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum', 0, 14);
 
 -- --------------------------------------------------------
 
@@ -97,13 +98,6 @@ CREATE TABLE `sym_roles` (
   `hname` varchar(24) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `sym_roles`
---
-
-INSERT INTO `sym_roles` (`id`, `name`, `can_read`, `can_rw`, `hname`) VALUES
-(67, 'ROLE_SAVETNIK', 0, 0, 'savetnik');
-
 -- --------------------------------------------------------
 
 --
@@ -126,12 +120,10 @@ CREATE TABLE `sym_user` (
 --
 
 INSERT INTO `sym_user` (`id`, `username`, `password`, `roles`, `is_active`, `email`, `ime`) VALUES
-(23, 'ron', '$2y$13$ISvCgSU8dfvuORJrkYWyyuWgWB9C4EmolfA65a12IgT9DR04KGW.a', '["ROLE_NOVINAR"]', 1, 'ron@example.com', 'ronald'),
-(24, 'mike', '$2y$13$LwYWEcyei1UjcC2cmGJZ5OvH.BJVyRksDKd4LMOntg3EW2OwXUZ66', '["ROLE_NOVINAR"]', 1, 'mike@example.com', 'michael'),
 (25, 'admin', '$2y$13$DqDmj06uFq2oGNnkXOahCe4e9VyvDKf1d/VL.ibwaIfzwwxgDtWye', '["ROLE_ADMIN"]', 1, 'admin@example.com', 'administrator'),
-(44, 'sav', '$2y$13$fDF5RAqlEDbn9dYFzBuqYeTPCuUdxOUrZQRqbv5gxOdcjcTfU.0Pe', '["ROLE_SAVETNIK"]', 1, 'wesdfsr@wer.lm', 'savetnik'),
-(45, 'we', '$2y$13$DJx3KavW677PeYX2iweN6.NWZ9sPgXlZICe.XTnzMadwi5w2OQBOi', '["ROLE_RW"]', 1, 'qe@q.m', 'we'),
-(46, 'test4', '$2y$13$DFJlvBAWl3t0TXjjqoViyu/Ylj7rA88vX0ZqnO614mumoTX9ZFfzi', '["ROLE_NOVINAR"]', 1, 'ssss@www.yu', 'test4');
+(48, 'mika', '$2y$13$PIx9tJnckSndT0YCwv3yUemN/SOf9ZRyVDFaBax.kxUHGECHUtr4y', '["ROLE_NOVINAR"]', 1, 'mika@qw.com', 'mika'),
+(49, 'pera', '$2y$13$pSgioxdvDwEy4okjETjhyuKHB5ypIL844uwfYieapKVi.ba/a1VC6', '["ROLE_NOVINAR"]', 1, 'pera@qw.com', 'pera'),
+(50, 'laza', '$2y$13$TJDmN9u9p/RSbe6zM/Pig.gsGTj336NHOL.PjQWH5/8hNUgnufhG.', '["ROLE_MANAGER"]', 1, 'laza@qw.com', 'laza');
 
 --
 -- Indexes for dumped tables
@@ -186,7 +178,7 @@ ALTER TABLE `sym_user`
 -- AUTO_INCREMENT for table `sym_article`
 --
 ALTER TABLE `sym_article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `sym_ideja`
 --
@@ -196,12 +188,12 @@ ALTER TABLE `sym_ideja`
 -- AUTO_INCREMENT for table `sym_roles`
 --
 ALTER TABLE `sym_roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `sym_user`
 --
 ALTER TABLE `sym_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 --
 -- Constraints for dumped tables
 --

@@ -106,21 +106,6 @@ class ArticleController extends Controller
         }
     }
 
-
-    /**
-     * Finds and displays a Article entity.
-     *
-
-    public function previewAction(Article $article)
-    {
-        $deleteForm = $this->createDeleteForm($article);
-
-        return $this->render('MyCompanyArticleBundle:Article:show.html.twig', array(
-            'article' => $article,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }*/
-
     /**
      * Displays a form to edit an existing Article entity.
      *
