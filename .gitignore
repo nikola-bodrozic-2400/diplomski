@@ -14,3 +14,5 @@
 /web/config.php
 /web/.htaccess-dev
 /.htaccess
+/src/MojeKlase/array.inc
+/src/MojeKlase/cred.inc

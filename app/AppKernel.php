@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new MyCompany\UserBundle\UserBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new MyCompany\PaymentBundle\PaymentBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
