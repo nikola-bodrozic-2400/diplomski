@@ -1,49 +1,44 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Uredi post</h1>
+    <h1>Lektorski radovi</h1>
 
     {{ form_start(edit_form) }}
 
         <div>
             {{ form_row(edit_form.title) }}
         </div>
-        <div>
-            {{ form_row(edit_form.time) }}
-        </div>
-        <div>
-            {{ form_row(edit_form.location) }}
-        </div>
+
         <div>
             {{ form_row(edit_form.body) }}
         </div>
+
         <div>
             {{ form_row(edit_form.preview) }}
         </div>
-        <div>
-            {{ form_row(edit_form.progres) }}
-        </div>
+
         <div>
             <input  class="btn btn-info" type="submit" value="Ažuriraj" />
         </div>
-        {{ form_rest(edit_form) }}
-    {{ form_end(edit_form) }}
 
+        {{ form_rest(edit_form) }}
+
+    {{ form_end(edit_form) }}
 
     <ul  class="list-unstyled"  style="display: inline-block;">
         <li style="display: inline-block;">
-            <a class="btn btn-info" href="{{ path('news_lektor', { 'id': article.id }) }}">Prosledi lektoru</a>
+<a href='mailto:direktor@example.com?subject=Gotov%20Post%20id:{{ article.id }}%20&body=Post%20{{article.title}}%20je%20spreman%20za%20klijenta.%20Link%20{{ app.request.getSchemeAndHttpHost() }}/{{ article.id }}/show'>send mail</a>
+            <a class="btn btn-info" id="prosledi" href="{{ path('news_lektor', { 'id': article.id }) }}">Prosledi link</a>
         </li>
         <li style="display: inline-block;">
             <a class="btn btn-info" href="{{ path('news_index') }}">Otkaži</a>
         </li>
-
-        <li style="display: inline-block;">
-            &nbsp;
-        </li>
-        <li style="display: inline-block;">
-            {{ form_start(delete_form) }}
-            {{ form_end(delete_form) }}
-        </li>
     </ul>
+{% endblock %}
+
+{% block javascripts %}
+     {{ parent() }}
+     <script>
+        var postid = {{ article.id }}; 
+     </script>
 {% endblock %}

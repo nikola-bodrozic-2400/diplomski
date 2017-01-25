@@ -3,19 +3,13 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 18, 2017 at 11:53 PM
--- Server version: 5.7.16-0ubuntu0.16.04.1
+-- Generation Time: Jan 25, 2017 at 09:23 PM
+-- Server version: 5.7.17-0ubuntu0.16.04.1
 -- PHP Version: 7.0.13-0ubuntu0.16.04.1
 
 SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `logan`
@@ -67,7 +61,7 @@ CREATE TABLE `sym_article` (
 --
 
 INSERT INTO `sym_article` (`id`, `owner_id`, `title`, `time`, `location`, `body`, `preview`, `progres`) VALUES
-(1, 48, 'mikin post', '2012-01-01 00:00:00', '44.817457, 20.464354', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum', 1, 12),
+(1, 48, 'mikin post', '2012-01-01 00:00:00', '44.817457, 20.464354', 'ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum', 0, 78),
 (2, 49, 'perin post', '2012-01-01 00:00:00', '44.817457, 20.464354', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum', 0, 14);
 
 -- --------------------------------------------------------
@@ -123,7 +117,8 @@ INSERT INTO `sym_user` (`id`, `username`, `password`, `roles`, `is_active`, `ema
 (25, 'admin', '$2y$13$DqDmj06uFq2oGNnkXOahCe4e9VyvDKf1d/VL.ibwaIfzwwxgDtWye', '["ROLE_ADMIN"]', 1, 'admin@example.com', 'administrator'),
 (48, 'mika', '$2y$13$PIx9tJnckSndT0YCwv3yUemN/SOf9ZRyVDFaBax.kxUHGECHUtr4y', '["ROLE_NOVINAR"]', 1, 'mika@qw.com', 'mika'),
 (49, 'pera', '$2y$13$pSgioxdvDwEy4okjETjhyuKHB5ypIL844uwfYieapKVi.ba/a1VC6', '["ROLE_NOVINAR"]', 1, 'pera@qw.com', 'pera'),
-(50, 'laza', '$2y$13$TJDmN9u9p/RSbe6zM/Pig.gsGTj336NHOL.PjQWH5/8hNUgnufhG.', '["ROLE_MANAGER"]', 1, 'laza@qw.com', 'laza');
+(50, 'laza', '$2y$13$TJDmN9u9p/RSbe6zM/Pig.gsGTj336NHOL.PjQWH5/8hNUgnufhG.', '["ROLE_MANAGER"]', 1, 'laza@qw.com', 'laza'),
+(51, 'donald', '$2y$13$aq.c1rM3iP94ujmp1S6SHO/JOQSmLtaNdBrg8Ippk9DkAOZU6ySaa', '["ROLE_NARUCILAC"]', 1, 'r34rrrr@rrr.com', 'donald');
 
 --
 -- Indexes for dumped tables
@@ -193,7 +188,7 @@ ALTER TABLE `sym_roles`
 -- AUTO_INCREMENT for table `sym_user`
 --
 ALTER TABLE `sym_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 --
 -- Constraints for dumped tables
 --
@@ -211,7 +206,3 @@ ALTER TABLE `article_user`
 ALTER TABLE `sym_article`
   ADD CONSTRAINT `FK_B8677DCD7E3C61F9` FOREIGN KEY (`owner_id`) REFERENCES `sym_user` (`id`) ON DELETE CASCADE;
 SET FOREIGN_KEY_CHECKS=1;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
