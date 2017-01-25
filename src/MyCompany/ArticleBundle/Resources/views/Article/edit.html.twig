@@ -30,18 +30,18 @@
     {{ form_end(edit_form) }}
 
 
-    <ul  class="list-unstyled">
-        <li>
-            &nbsp;
+    <ul  class="list-unstyled"  style="display: inline-block;">
+        <li style="display: inline-block;">
+            <a class="btn btn-info" href="{{ path('news_lektor', { 'id': article.id }) }}">Prosledi lektoru</a>
         </li>
-        <li>
+        <li style="display: inline-block;">
             <a class="btn btn-info" href="{{ path('news_index') }}">Otkaži</a>
         </li>
 
-        <li>
+        <li style="display: inline-block;">
             &nbsp;
         </li>
-        <li>
+        <li style="display: inline-block;">
             {{ form_start(delete_form) }}
             {{ form_end(delete_form) }}
         </li>

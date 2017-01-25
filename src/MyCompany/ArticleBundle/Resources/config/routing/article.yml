@@ -23,6 +23,11 @@ news_edit:
     defaults: { _controller: "MyCompanyArticleBundle:Article:edit" }
     methods:  [GET, POST]
 
+news_lektor:
+    path:     /{id}/edit
+    defaults: { _controller: "MyCompanyArticleBundle:Article:edit" }
+    methods:  [GET, POST]
+
 news_delete:
     path:     /{id}/delete
     defaults: { _controller: "MyCompanyArticleBundle:Article:delete" }

@@ -135,6 +135,33 @@ class ArticleController extends Controller
     }
 
     /**
+    * Ruta za lektora
+    *
+    */
+    public function lektorAction()
+    {
+        $this->enforceOwnerSecurity($article);
+
+        $deleteForm = $this->createDeleteForm($article);
+        $editForm = $this->createForm('MyCompany\ArticleBundle\Form\ArticleType', $article);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($article);
+            $em->flush();
+
+            return $this->redirectToRoute('news_edit', array('id' => $article->getId()));
+        }
+
+        return $this->render('MyCompanyArticleBundle:Article:edit.html.twig', array(
+            'article' => $article,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));        
+    }
+
+    /**
      * Deletes a Article entity.
      *
      */
