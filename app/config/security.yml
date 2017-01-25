@@ -17,6 +17,8 @@ security:
                 path: logout
                 target: news_index
             anonymous: null
+            remember_me:
+                secret: '%secret%'
     access_control:
         -
             path: ^/roles
