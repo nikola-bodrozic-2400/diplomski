@@ -87,6 +87,8 @@ class ArticleController extends Controller
     }
 
     /**
+     * Prikazuje jedan post
+     *
      * @param Article $article
      * @return \Symfony\Component\HttpFoundation\Response
      */
