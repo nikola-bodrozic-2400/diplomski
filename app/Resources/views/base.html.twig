@@ -56,6 +56,11 @@
                                     <a href="{{ path('news_direktor') }}">Svi postovi</a>
                                 </li>                                
                             {% endif %}
+                            {% if is_granted('ROLE_NARUCILAC') %}
+                                <li{% if strana =="index_placanje" %} class='active'{% endif %}>
+                                    <a href="{{ path('index_placanje') }}">Uplata</a>
+                                </li>                                
+                            {% endif %}                            
                             <li{% if strana =="nesting_index" %} class='active'{% endif %}>
                                     <a href="{{ path('nesting_index') }}">Nesting</a>
                             </li>                            

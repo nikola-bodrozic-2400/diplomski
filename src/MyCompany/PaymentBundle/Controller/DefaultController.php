@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/placanje")
+     * @Route("/placanje", name="index_placanje")
      * @Security("has_role('ROLE_NARUCILAC')")
      */
     public function indexAction()
@@ -46,10 +46,10 @@ class DefaultController extends Controller
         $w = $q[0];
         $w = explode('=', $w);
         if($sandbox == TRUE){
-            echo "<a href='https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&useraction=commit&token={$w[1]}'>Plati post id:60</a>";
+            $data = "<a href='https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&useraction=commit&token={$w[1]}'>Plati post id:60</a>";
         } else {
-            echo "<a href='https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&useraction=commit&token={$w[1]}'>Plati post id:60</a>";
+            $data = "<a href='https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&useraction=commit&token={$w[1]}'>Plati post id:60</a>";
         }
-        return $this->render('PaymentBundle:Default:index.html.twig');
+        return $this->render('PaymentBundle:Default:index.html.twig', ['data' => $data] );
     }
 }
