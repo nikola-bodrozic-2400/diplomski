@@ -54,8 +54,11 @@
                             {% if is_granted('ROLE_MANAGER') or is_granted('ROLE_NOVINAR')  %}
                                 <li{% if strana =="news_direktor" %} class='active'{% endif %}>
                                     <a href="{{ path('news_direktor') }}">Svi postovi</a>
-                                </li>
+                                </li>                                
                             {% endif %}
+                            <li{% if strana =="nesting_index" %} class='active'{% endif %}>
+                                    <a href="{{ path('nesting_index') }}">Nesting</a>
+                            </li>                            
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div><!--/.container-fluid -->
