@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\Security\Core\Security;
 
 class SecurityController extends Controller
 {
@@ -16,16 +17,20 @@ class SecurityController extends Controller
      */
     public function loginAction(Request $request)
     {
+        usleep(250000);
         $session = $request->getSession();
 
-        // get the login error if there is one
-        $error = $session->get(SecurityContextInterface::AUTHENTICATION_ERROR);
-        $session->remove(SecurityContextInterface::AUTHENTICATION_ERROR);
+        if( $session->get('bp2') == null ) $session->set('bp2', 2) ;
 
+        $temp = $session->get('bp2') ;
+        $temp++;
+        $session->set('bp2', $temp);
+
+        $helper = $this->get('security.authentication_utils');
         return array(
-            // last username entered by the user
-            'last_username' => $session->get(SecurityContextInterface::LAST_USERNAME),
-            'error'         => $error,
+            'last_username' => $helper->getLastUsername(),
+            'error'         => $helper->getLastAuthenticationError(),
+            'bg'            => $session->get('bp2')-3,
         );
     }
 

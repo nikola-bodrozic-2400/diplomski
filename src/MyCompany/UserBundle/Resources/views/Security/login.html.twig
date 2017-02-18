@@ -1,27 +1,33 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <section class="login">
-        <article>
+    {% if bg > 2 %}
+        hakerski napad je detektovan ip adresa je logovana.
+    {% else %}
 
-            {% if error %}
-                <div class="error">{{ error.message }}</div>
-            {% endif %}
-<div>
 
-</div>
-<br>
-            <form action="{{ path('login_check') }}" method="post">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control"/>
+            <section class="login">
+                <article>
 
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="_password" class="form-control"/>
-                Remember me <input type="checkbox" name="_remember_me" checked />
+                    {% if error %}
+                        <div class="error">{{ error.message }}</div>
+                    {% endif %}
+
+            <div class="error">Broj pogresnih logovanja u ovoj sesiji {{ bg }}</div>
+
                 <br>
-                <button type="submit" class="btn btn-primary pull-left">login</button>
-            </form>
+                    <form action="{{ path('login_check') }}" method="post">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control"/>
 
-        </article>
-    </section>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="_password" class="form-control"/>
+                        Remember me <input type="checkbox" name="_remember_me" checked />
+                        <br>
+                        <button type="submit" class="btn btn-primary pull-left">login</button>
+                    </form>
+
+                </article>
+            </section>
+     {% endif %}
 {% endblock %}
