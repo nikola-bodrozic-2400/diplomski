@@ -28,7 +28,7 @@ class ArticleController extends Controller
         // var_dump( $this->get('security.token_storage')->getToken()->getUser()->getRoles());die;
 
         $em = $this->getDoctrine()->getManager();
-        $articles = $em->getRepository('MyCompanyArticleBundle:Article')->findBy( ['preview' => 0] );
+        $articles = $em->getRepository('MyCompanyArticleBundle:Article')->findBy( ['preview' => 0], ['id' => 'DESC'] );
         $paginator  = $this->get('knp_paginator');
 
         $blogPosts = $paginator->paginate(
