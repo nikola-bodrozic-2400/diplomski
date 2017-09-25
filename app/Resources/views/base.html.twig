@@ -34,18 +34,16 @@
                                 <a href="{{ path('news_index') }}">Home</a>
                             </li>
 
-                            <li
+                            <li>
                                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                                      <a href="{{ path('logout') }}">Hello <strong>{{ app.user.username }}</strong> Logout</a>
                                 {% else %}
                                      <a href="{{ path('login_form') }}">Login</a>
                                 {% endif %}
                            </li>                            
-                            {% if is_granted('ROLE_ADMIN') %}
                             <li{% if strana =="user_register" %} class='active'{% endif %}>
                                 <a href="{{ path('user_register') }}">Registruj zaposlenog</a>
                             </li>
-                            {% endif %}
                             {% if is_granted('ROLE_MANAGER') or is_granted('ROLE_NOVINAR')  %}
                                 <li{% if strana =="news_direktor" %} class='active'{% endif %}>
                                     <a href="{{ path('news_direktor') }}">Svi postovi</a>

@@ -8,12 +8,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;  
 use MyCompany\UserBundle\Entity\User;
 use MyCompany\UserBundle\Form\RegisterFormType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class RegisterController extends Controller
 {
     /**
      * registracija zaposlenog
-     *
+     * @Security("has_role('ROLE_ADMIN')")
      * @Route("/register", name="user_register")
      * @Template()
      */
@@ -29,7 +30,7 @@ class RegisterController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $request->getSession()
                 ->getFlashBag()
-                ->add('success', 'Registracija uspela, kliknite na login u meniju')
+                ->add('success', 'Registracija uspela')
             ;
 
             $data = $form->getData();
@@ -63,7 +64,7 @@ class RegisterController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $request->getSession()
                 ->getFlashBag()
-                ->add('success', 'Registracija uspela, kliknite na login u meniju')
+                ->add('success', 'Registracija uspela')
             ;
 
             $data = $form->getData();
