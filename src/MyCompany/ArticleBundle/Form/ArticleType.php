@@ -16,6 +16,7 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('title', 'Symfony\Component\Form\Extension\Core\Type\TextType', ['label' => 'Naslov'] )
+            ->add('kategorija')
             ->add('time', 'Symfony\Component\Form\Extension\Core\Type\DateTimeType', ['label' => 'Vreme'] )
             ->add('location', 'Symfony\Component\Form\Extension\Core\Type\TextType', ['label' => 'Lokacija'] )
             ->add('body', 'Symfony\Component\Form\Extension\Core\Type\TextareaType', ['label' => 'Tekst'] )
