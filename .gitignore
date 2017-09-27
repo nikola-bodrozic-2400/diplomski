@@ -16,4 +16,5 @@
 /.htaccess
 /src/MojeKlase/array.inc
 /src/MojeKlase/cred.inc
+/web/phpMyAdmin
 /phpMyAdmin
