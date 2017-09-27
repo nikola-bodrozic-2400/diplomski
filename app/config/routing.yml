@@ -1,3 +1,7 @@
+my_company_article_kategorija:
+    resource: "@MyCompanyArticleBundle/Controller/KategorijaController.php"
+    type:     annotation
+
 nesting:
     resource: "@NestingBundle/Controller/"
     type:     annotation

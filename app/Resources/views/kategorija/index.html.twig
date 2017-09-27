@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Kategorijas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for kategorija in kategorijas %}
+            <tr>
+                <td><a href="{{ path('kategorija_show', { 'id': kategorija.id }) }}">{{ kategorija.id }}</a></td>
+                <td>{{ kategorija.title }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('kategorija_show', { 'id': kategorija.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('kategorija_edit', { 'id': kategorija.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('kategorija_new') }}">Create a new kategorija</a>
+        </li>
+    </ul>
+{% endblock %}
