@@ -44,11 +44,9 @@
                             <li{% if strana =="user_register" %} class='active'{% endif %}>
                                 <a href="{{ path('user_register') }}">Registruj zaposlenog</a>
                             </li>
-                            {% if is_granted('ROLE_MANAGER') or is_granted('ROLE_NOVINAR')  %}
-                                <li{% if strana =="news_direktor" %} class='active'{% endif %}>
-                                    <a href="{{ path('news_direktor') }}">Svi postovi</a>
-                                </li>                                
-                            {% endif %}
+                            <li>
+                                <a href="{{ path('kategorija_index') }}">Kategorije</a>
+                            </li>                            
                             {% if is_granted('ROLE_NARUCILAC') %}
                                 <li{% if strana =="index_placanje" %} class='active'{% endif %}>
                                     <a href="{{ path('index_placanje') }}">Uplata</a>

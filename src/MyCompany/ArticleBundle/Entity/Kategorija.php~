@@ -32,6 +32,7 @@ class Kategorija
   /**
    *
    * @ORM\OneToMany(targetEntity="Article", mappedBy="kategorija")
+   * @ORM\JoinColumn(onDelete="CASCADE")
    */
   private $article;
 
@@ -48,4 +49,72 @@ class Kategorija
 
 
  
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Kategorija
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Add article
+     *
+     * @param \MyCompany\ArticleBundle\Entity\Article $article
+     *
+     * @return Kategorija
+     */
+    public function addArticle(\MyCompany\ArticleBundle\Entity\Article $article)
+    {
+        $this->article[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * Remove article
+     *
+     * @param \MyCompany\ArticleBundle\Entity\Article $article
+     */
+    public function removeArticle(\MyCompany\ArticleBundle\Entity\Article $article)
+    {
+        $this->article->removeElement($article);
+    }
+
+    /**
+     * Get article
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
 }

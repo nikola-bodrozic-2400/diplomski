@@ -31,7 +31,8 @@ class Kategorija
     
   /**
    *
-   * @ORM\OneToMany(targetEntity="Article", mappedBy="kategorija")
+   * @ORM\OneToMany(targetEntity="Article", mappedBy="kategorija", cascade={"remove"})
+   * @ORM\JoinColumn(onDelete="CASCADE")
    */
   private $article;
 
