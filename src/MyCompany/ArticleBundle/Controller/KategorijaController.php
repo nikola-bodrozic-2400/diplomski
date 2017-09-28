@@ -5,11 +5,14 @@ namespace MyCompany\ArticleBundle\Controller;
 use MyCompany\ArticleBundle\Entity\Kategorija;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Kategorija controller.
  *
+ * @Security("has_role('ROLE_ADMIN')")
  * @Route("kategorija")
  */
 class KategorijaController extends Controller
