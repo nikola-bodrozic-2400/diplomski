@@ -236,20 +236,6 @@ class Article
     }
 
     /**
-     * Set kategorija
-     *
-     * @param \MyCompany\ArticleBundle\Entity\Kategorija $kategorija
-     * 
-     * @return Kategorija
-     */
-    public function setZgrada(MyCompany\ArticleBundle\Entity\Kategorija $kategorija = null)
-    {
-        $this->kategorija = $kategorija;
-
-        return $this;
-    }
-
-    /**
      * Get kategorija
      *
      * @return \MyCompany\ArticleBundle\Entity\Kategorija
