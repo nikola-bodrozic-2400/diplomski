@@ -3,11 +3,11 @@
     {% block body %}
         <section class="login">
             <article>
-                <h1>Registruj zaposlenog</h1>
+                <h1>Register employee</h1>
 
                 <form action="{{ path('user_register') }}" method="POST" novalidate>
                     {{ form_errors(form) }}
-                    {{ form_row( form.ime) }}  
+                    {{ form_row( form.ime, {"label":"name"}) }}  
                     {{ form_row( form.username) }}                    
                     {{ form_row( form.email) }}
                     {{ form_row( form.roles, {"label":"Role", 'attr' : { 'class' : 'form-control' }} ) }}

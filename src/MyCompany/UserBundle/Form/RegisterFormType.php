@@ -40,11 +40,8 @@ class RegisterFormType extends AbstractType
             $this->roles4form[$this->p[$i]->getHname()] = $this->p[$i]->getName();
         }
         $this->coreRoles = [
-            'Direktor' => 'ROLE_MANAGER',
-            'Novinar' => 'ROLE_NOVINAR',
-            'Narucilac' => 'ROLE_NARUCILAC',
-            'Lektor' => 'ROLE_LEKTOR',
-            'Knjigovodja' => 'ROLE_KNJIG'
+            'Admin' => 'ROLE_ADMIN',
+            'User' => 'ROLE_NOVINAR'
         ];
     }
 
@@ -68,7 +65,7 @@ class RegisterFormType extends AbstractType
                 'choices_as_values' => true,
                 'choices' => array(
                     'Dodatne role (at run time)' => $this->roles4form,
-                    'Osnovne role' => $this->coreRoles,
+                    'Roles' => $this->coreRoles,
                 ),
             ))
     	;

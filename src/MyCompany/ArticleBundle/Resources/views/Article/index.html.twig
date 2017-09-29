@@ -7,12 +7,12 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Naslov</th>
-                <th>Datum objavljivanja</th>
-                <th>Sažeto</th>
-                <th>Autor</th>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Extract</th>
+                <th>Author</th>
                 {% if is_granted('ROLE_NOVINAR') %}
-                <th>Akcije</th>
+                <th>Action</th>
                 {% endif %}
             </tr>
         </thead>
@@ -28,14 +28,14 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('news_show', { 'id': article.id }) }}">prikaži</a>
+                            <a href="{{ path('news_show', { 'id': article.id }) }}">Show</a>
                         </li>
                         <li>
-                            <a href="{{ path('news_edit', { 'id': article.id }) }}">edituj</a>
+                            <a href="{{ path('news_edit', { 'id': article.id }) }}">Edit</a>
                         </li>
                         {% if app.user == article.owner %}
                         <li>
-                            Vi ste autor
+                            You are author
                         </li>
                         {% endif %}
                     </ul>
@@ -51,7 +51,7 @@
     {% if is_granted('ROLE_NOVINAR') %}
     <ul>
         <li>
-            <a href="{{ path('news_new') }}">Napravite novi post</a>
+            <a href="{{ path('news_new') }}">Create new post</a>
         </li>
     </ul>
     {% endif %}

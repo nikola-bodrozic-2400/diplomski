@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Uredi post</h1>
+    <h1>Edit post</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input  class="btn btn-info" type="submit" value="Kreiraj" />
+        <input  class="btn btn-info" type="submit" value="Create" />
     {{ form_end(edit_form) }}
 <br/>
 
     <ul  class="list-unstyled"  style="display: inline-block;">
 
         <li style="display: inline-block;">
-            <a class="btn btn-info" href="{{ path('news_index') }}">Otkaži</a>
+            <a class="btn btn-info" href="{{ path('news_index') }}">Cancel</a>
         </li>
 
         <li style="display: inline-block;">
