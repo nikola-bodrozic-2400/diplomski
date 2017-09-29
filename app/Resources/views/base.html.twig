@@ -42,19 +42,16 @@
                                 {% endif %}
                            </li>                            
                             <li{% if strana =="user_register" %} class='active'{% endif %}>
-                                <a href="{{ path('user_register') }}">Registruj zaposlenog</a>
+                                <a href="{{ path('user_register') }}">Register employee</a>
                             </li>
                             <li>
-                                <a href="{{ path('kategorija_index') }}">Kategorije</a>
+                                <a href="{{ path('kategorija_index') }}">Categories</a>
                             </li>                            
                             {% if is_granted('ROLE_NARUCILAC') %}
                                 <li{% if strana =="index_placanje" %} class='active'{% endif %}>
                                     <a href="{{ path('index_placanje') }}">Uplata</a>
                                 </li>                                
-                            {% endif %}                            
-                            <li{% if strana =="nesting_index" %} class='active'{% endif %}>
-                                    <a href="{{ path('nesting_index') }}">Nesting</a>
-                            </li>                            
+                            {% endif %}                                             
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div><!--/.container-fluid -->
@@ -62,7 +59,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <h3>Nikola Bodrozic for LCB CORP d.o.o. Beograd</h3>
+                    <h3>Nikola Bodrozic's portfolio on Amazon Cloud</h3>
                 </div>
             </div>
                             

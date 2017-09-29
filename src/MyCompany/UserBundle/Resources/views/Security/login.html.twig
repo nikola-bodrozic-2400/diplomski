@@ -1,20 +1,8 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    {% if bg > 2 %}
-        hakerski napad je detektovan ip adresa je logovana.
-    {% else %}
-
-
             <section class="login">
                 <article>
-
-                    {% if error %}
-                        <div class="error">{{ error.message }}</div>
-                    {% endif %}
-
-            <div class="error">Broj pogresnih logovanja u ovoj sesiji {{ bg }}</div>
-
                 <br>
                     <form action="{{ path('login_check') }}" method="post">
                         <label for="username">Username:</label>
@@ -29,5 +17,4 @@
 
                 </article>
             </section>
-     {% endif %}
 {% endblock %}

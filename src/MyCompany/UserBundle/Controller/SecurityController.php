@@ -17,20 +17,19 @@ class SecurityController extends Controller
      */
     public function loginAction(Request $request)
     {
-        usleep(250000);
+        //usleep(250000);
         $session = $request->getSession();
 
-        if( $session->get('bp2') == null ) $session->set('bp2', 2) ;
+        // if( $session->get('bp2') == null ) $session->set('bp2', 2) ;
 
-        $temp = $session->get('bp2') ;
-        $temp++;
-        $session->set('bp2', $temp);
+        //$temp = $session->get('bp2') ;
+        //$temp++;
+        //$session->set('bp2', $temp);
 
         $helper = $this->get('security.authentication_utils');
         return array(
             'last_username' => $helper->getLastUsername(),
             'error'         => $helper->getLastAuthenticationError(),
-            'bg'            => $session->get('bp2')-3,
         );
     }
 

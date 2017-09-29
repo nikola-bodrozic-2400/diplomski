@@ -5,7 +5,7 @@ namespace MyCompany\ArticleBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 class ArticleType extends AbstractType
 {
     /**
@@ -15,11 +15,11 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', 'Symfony\Component\Form\Extension\Core\Type\TextType', ['label' => 'Naslov'] )
+            ->add('title', 'Symfony\Component\Form\Extension\Core\Type\TextType', ['label' => 'Title'] )
             ->add('kategorija')
-            ->add('time', 'Symfony\Component\Form\Extension\Core\Type\DateTimeType', ['label' => 'Vreme'] )
-            ->add('location', 'Symfony\Component\Form\Extension\Core\Type\TextType', ['label' => 'Lokacija'] )
-            ->add('body', 'Symfony\Component\Form\Extension\Core\Type\TextareaType', ['label' => 'Tekst'] )
+            ->add('time', 'Symfony\Component\Form\Extension\Core\Type\DateTimeType', ['label' => 'Time'] )
+            ->add('location', 'Symfony\Component\Form\Extension\Core\Type\TextType', ['label' => 'Location', 'data' => '44.817457, 20.464354'] )
+            ->add('body', 'Symfony\Component\Form\Extension\Core\Type\TextareaType', ['label' => 'Text'] )
             ->add('preview', 'Symfony\Component\Form\Extension\Core\Type\CheckboxType', ['label' => 'Preview'] )
             ->add(
                 'progres',
